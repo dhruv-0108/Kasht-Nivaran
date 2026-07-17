@@ -7,10 +7,6 @@ function App() {
   const [lang, setLang] = useState<Language>('gu');
   const t = TRANSLATIONS[lang];
 
-  // Split the 12 names into left (first 6) and right (last 6) lists
-  const leftNames = t.namesList.slice(0, 6);
-  const rightNames = t.namesList.slice(6, 12);
-
   return (
     <div style={{
       minHeight: '100vh',
@@ -93,135 +89,128 @@ function App() {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: 'clamp(32px, 5vw, 64px) clamp(16px, 4vw, 40px) clamp(40px, 6vw, 80px)',
-        gap: '32px',
+        padding: 'clamp(32px, 5vw, 64px) clamp(16px, 4vw, 40px) clamp(48px, 8vw, 96px)',
+        gap: '40px',
       }}>
 
-        {/* Label above frame */}
-        <div style={{ textAlign: 'center' }}>
-          <p
-            className="inscription"
-            style={{ color: 'var(--sindoor)', letterSpacing: '0.35em', fontSize: '0.8rem', fontWeight: 800 }}
-          >
-            {t.subtitle}
-          </p>
-          <h1 style={{
-            fontFamily: lang === 'en' ? "'Cormorant Garamond', Georgia, serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
-            fontSize: 'clamp(1.75rem, 5vw, 3rem)',
-            fontWeight: 700,
-            letterSpacing: '0.12em',
-            marginTop: '8px',
-            color: 'var(--drapery)',
-          }}>
-            {t.title}
-          </h1>
-
-          <p style={{
-            fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
-            fontSize: 'clamp(0.85rem, 2vw, 1.1rem)',
-            fontWeight: 600,
-            color: 'var(--stone-lt)',
-            letterSpacing: '0.08em',
-            marginTop: '8px',
-            lineHeight: 1.5,
-          }}>
-            {t.subAddress}
-          </p>
-
-          <div style={{ marginTop: '16px' }}>
-            <hr className="threshold" />
-          </div>
-        </div>
-
-        {/* Responsive Layout: 12 Names on Left & Right on Desktop, Stacked on Mobile */}
+        {/* ── SECTION 1: The Immersion (Main Focus) ── */}
         <div style={{
           display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
+          flexDirection: 'column',
           alignItems: 'center',
           width: '100%',
-          maxWidth: '1200px',
-          gap: 'clamp(24px, 4vw, 64px)',
+          maxWidth: '640px',
+          textAlign: 'center',
+          gap: '24px',
         }}>
-          
-          {/* Left Column - Names 1-6 */}
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '16px',
-            minWidth: '200px',
-            textAlign: 'right',
-            flex: '1 1 200px',
-            order: 1
-          }} className="names-column-left">
-            {leftNames.map((name, index) => (
-              <div key={index} style={{
-                fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
-                fontSize: 'clamp(0.9rem, 1.5vw, 1.15rem)',
-                fontWeight: 600,
-                color: 'var(--drapery)',
-                letterSpacing: '0.1em',
-                lineHeight: '1.4',
-              }}>
-                {name}
-              </div>
-            ))}
+          {/* Label above frame */}
+          <div>
+            <p
+              className="inscription"
+              style={{ color: 'var(--sindoor)', letterSpacing: '0.35em', fontSize: '0.8rem', fontWeight: 800 }}
+            >
+              {t.subtitle}
+            </p>
+            <h1 style={{
+              fontFamily: lang === 'en' ? "'Cormorant Garamond', Georgia, serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+              fontSize: 'clamp(1.75rem, 5vw, 3rem)',
+              fontWeight: 700,
+              letterSpacing: '0.12em',
+              marginTop: '8px',
+              color: 'var(--drapery)',
+            }}>
+              {t.title}
+            </h1>
+
+            <p style={{
+              fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+              fontSize: 'clamp(0.85rem, 2vw, 1.1rem)',
+              fontWeight: 600,
+              color: 'var(--stone-lt)',
+              letterSpacing: '0.08em',
+              marginTop: '8px',
+              lineHeight: 1.5,
+            }}>
+              {t.subAddress}
+            </p>
+
+            <div style={{ marginTop: '16px' }}>
+              <hr className="threshold" />
+            </div>
           </div>
 
-          {/* Center Column - Image Frame */}
-          <div style={{
-            width: '100%',
-            maxWidth: 'min(100%, 560px)',
-            flex: '2 1 400px',
-            order: 2
-          }}>
+          {/* The image frame — centered, standalone, and clean */}
+          <div style={{ width: '100%' }}>
             <DarshanCard t={t} />
           </div>
+        </div>
 
-          {/* Right Column - Names 7-12 */}
+        {/* Divider Threshold between Darshan and Names */}
+        <div style={{ width: '100%', maxWidth: '720px', marginTop: '16px' }}>
+          <hr className="threshold" />
+        </div>
+
+        {/* ── SECTION 2: 12 Names of Hanuman (Dedicated Section below) ── */}
+        <section style={{
+          width: '100%',
+          maxWidth: '720px',
+          textAlign: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '32px',
+          paddingTop: '16px',
+        }}>
+          <div>
+            <h2 style={{
+              fontFamily: lang === 'en' ? "'Cormorant Garamond', Georgia, serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+              fontSize: 'clamp(1.35rem, 3.5vw, 2rem)',
+              fontWeight: 700,
+              letterSpacing: '0.08em',
+              color: 'var(--drapery)',
+            }}>
+              {t.namesHeading}
+            </h2>
+            <div style={{
+              width: '60px',
+              height: '2px',
+              backgroundColor: 'var(--sindoor)',
+              margin: '12px auto 0',
+            }} />
+          </div>
+
+          {/* Grid Layout of Names: 3 Columns on Desktop, 2 on Tablet, 1 on Mobile */}
           <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '16px',
-            minWidth: '200px',
-            textAlign: 'left',
-            flex: '1 1 200px',
-            order: 3
-          }} className="names-column-right">
-            {rightNames.map((name, index) => (
-              <div key={index} style={{
-                fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
-                fontSize: 'clamp(0.9rem, 1.5vw, 1.15rem)',
-                fontWeight: 600,
-                color: 'var(--drapery)',
-                letterSpacing: '0.1em',
-                lineHeight: '1.4',
-              }}>
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '20px',
+            width: '100%',
+          }}>
+            {t.namesList.map((name, index) => (
+              <div
+                key={index}
+                style={{
+                  padding: '16px 20px',
+                  background: 'rgba(244, 236, 216, 0.4)',
+                  border: '1px solid rgba(212, 149, 10, 0.15)',
+                  fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+                  fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)',
+                  fontWeight: 600,
+                  color: 'var(--drapery)',
+                  letterSpacing: '0.08em',
+                  textAlign: 'center',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minHeight: '56px',
+                }}
+              >
                 {name}
               </div>
             ))}
           </div>
-
-        </div>
+        </section>
 
       </main>
-
-      {/* Custom Styles override for responsive order on mobile */}
-      <style>{`
-        @media (max-width: 900px) {
-          .names-column-left, .names-column-right {
-            text-align: center !important;
-            flex: 1 1 100% !important;
-          }
-          .names-column-left {
-            order: 2 !important;
-          }
-          .names-column-right {
-            order: 3 !important;
-          }
-        }
-      `}</style>
 
       {/* ── Footer ── */}
       <footer style={{
