@@ -14,6 +14,8 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
   
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const scrollIntervalRef = useRef<number | null>(null);
+  const isProgrammaticScrollRef = useRef(false);
+  const timeoutRef = useRef<number | null>(null);
 
   const toggleAutoScroll = () => {
     if (isAutoScrolling) {
@@ -39,6 +41,58 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
     if (scrollIntervalRef.current) {
       clearInterval(scrollIntervalRef.current);
       scrollIntervalRef.current = null;
+    }
+  };
+
+  const handleVerseClick = (idx: number) => {
+    stopAutoScroll();
+    setActiveVerseIdx(idx);
+    
+    isProgrammaticScrollRef.current = true;
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = window.setTimeout(() => {
+      isProgrammaticScrollRef.current = false;
+    }, 600);
+
+    const container = scrollContainerRef.current;
+    if (container) {
+      const child = container.children[idx] as HTMLElement;
+      if (child) {
+        container.scrollTo({
+          top: child.offsetTop - 20,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
+  const handleScroll = () => {
+    if (isProgrammaticScrollRef.current) return;
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const children = container.children;
+    const containerTop = container.getBoundingClientRect().top;
+    const containerHeight = container.clientHeight;
+    const targetY = containerTop + containerHeight / 4;
+
+    let closestIdx = 0;
+    let minDistance = Infinity;
+
+    for (let i = 0; i < children.length; i++) {
+      const child = children[i];
+      const rect = child.getBoundingClientRect();
+      const childCenter = rect.top + rect.height / 2;
+      const distance = Math.abs(childCenter - targetY);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIdx = i;
+      }
+    }
+
+    if (closestIdx !== activeVerseIdx) {
+      setActiveVerseIdx(closestIdx);
     }
   };
 
@@ -156,6 +210,7 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
         {/* Left Side: Scrollable Verses */}
         <div 
           ref={scrollContainerRef}
+          onScroll={handleScroll}
           style={{
             maxHeight: '520px',
             overflowY: 'auto',
@@ -172,10 +227,7 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
             return (
               <div
                 key={verse.num}
-                onClick={() => {
-                  stopAutoScroll();
-                  setActiveVerseIdx(idx);
-                }}
+                onClick={() => handleVerseClick(idx)}
                 style={{
                   padding: '16px',
                   borderRadius: '12px',
