@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { DarshanCard } from './components/DarshanCard';
 import { Directions } from './components/Directions';
+import { VisitorCounter } from './components/VisitorCounter';
 import { TRANSLATIONS } from './types';
 import type { Language } from './types';
 
@@ -21,12 +22,14 @@ function App() {
     }}>
 
       {/* ── Header ── */}
-      <header style={{
+      <header className="app-header" style={{
         padding: '18px clamp(16px, 4vw, 40px)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         borderBottom: '1.5px solid rgba(212, 149, 10, 0.3)',
+        flexWrap: 'wrap',
+        gap: '16px',
       }}>
         {/* Language selector — top left corner */}
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
@@ -81,6 +84,9 @@ function App() {
             हिन्दी
           </button>
         </div>
+
+        {/* Live Visitor / Devotee counter - centered in header */}
+        <VisitorCounter t={t} />
 
         {/* Location — top right corner */}
         <span className="caption" style={{ color: 'var(--stone)', fontWeight: 700, letterSpacing: '0.2em' }}>
@@ -282,6 +288,12 @@ function App() {
 
         /* Mobile viewport changes (like s21 ultra and standard phones) */
         @media (max-width: 600px) {
+          .app-header {
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 12px !important;
+          }
           .names-container {
             flex-direction: column !important;
             gap: 12px !important;

@@ -20,6 +20,8 @@ export interface Translations {
   byRoadDesc: string;
   nearbyTitle: string;
   nearbyDesc: string;
+  onlineDevotees: string;
+  totalDarshans: string;
 }
 
 export const TRANSLATIONS: Record<Language, Translations> = {
@@ -55,7 +57,9 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     byRoadTitle: "રોડ માર્ગ દ્વારા",
     byRoadDesc: "ઓલપાડથી આશરે ૧૦ કિ.મી. અને સુરતથી ૨૫ કિ.મી. અંતરે ગોલા-તકરમા રોડ પર આવેલું છે.",
     nearbyTitle: "નજીકનું સ્થળ",
-    nearbyDesc: "ગોલા ગામ, ઓલપાડ તાલુકો, સુરત જિલ્લો."
+    nearbyDesc: "ગોલા ગામ, ઓલપાડ તાલુકો, સુરત જિલ્લો.",
+    onlineDevotees: "ભક્તો ઓનલાઈન",
+    totalDarshans: "કુલ દર્શન મુલાકાતો"
   },
   en: {
     title: "Kasht Nivaran Hanumanji",
@@ -89,7 +93,9 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     byRoadTitle: "By Road",
     byRoadDesc: "Located on Gola-Takarma Road, approx. 10 km from Olpad and 25 km from Surat.",
     nearbyTitle: "Landmark",
-    nearbyDesc: "Gola Village, Olpad Taluka, Surat District."
+    nearbyDesc: "Gola Village, Olpad Taluka, Surat District.",
+    onlineDevotees: "devotees online",
+    totalDarshans: "total darshans"
   },
   hi: {
     title: "कष्ट निवारण हनुमानजी",
@@ -123,6 +129,8 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     byRoadTitle: "सड़क मार्ग",
     byRoadDesc: "ओलपाड से लगभग 10 किमी और सूरत से 25 किमी की दूरी पर गोला-तकरमा रोड पर स्थित है।",
     nearbyTitle: "निकटतम स्थान",
-    nearbyDesc: "गोला गांव, ओलपाड तालुका, सूरत जिला।"
+    nearbyDesc: "गोला गांव, ओलपाड तालुका, सूरत जिला।",
+    onlineDevotees: "भक्त ऑनलाइन",
+    totalDarshans: "कुल दर्शन"
   }
 };
