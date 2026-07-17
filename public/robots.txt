@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kasht-nivaran.vercel.app/sitemap.xml
