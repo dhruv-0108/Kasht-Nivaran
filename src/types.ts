@@ -21,20 +21,20 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     location: "ગોલા ગામ · ઓલપાડ",
     footerSalutation: "જય શ્રી હનુમાન",
     footerBrand: "કષ્ટ નિવારણ હનુમાનજી",
-    namesHeading: "શ્રી હનુમાનજીના ૧૨ નામ", // Removed 'પાઠના'
+    namesHeading: "શ્રી હનુમાનજીના ૧૨ નામ",
     namesList: [
-      "જય હનુમાન!",
-      "જય અંજની સુત!",
-      "જય વાયુ પુત્ર!",
-      "જય મહાબલ!",
-      "જય રામેષ્ટ!",
-      "જય ફાલ્ગુન સખા!",
-      "જય પિંગાક્ષ!",
-      "જય અમિત વિક્રમ!",
-      "જય ઉદધિક્રમણ!",
-      "જય સીતા શોક વિનાશક!",
-      "જય લક્ષ્મણ પ્રાણ દાતા!",
-      "જય દશગ્રીવ દર્પહા!"
+      "૧. જય હનુમાન!",
+      "૨. જય અંજની સુત!",
+      "૩. જય વાયુ પુત્ર!",
+      "૪. જય મહાબલ!",
+      "૫. જય રામેષ્ટ!",
+      "૬. જય ફાલ્ગુન સખા!",
+      "૭. જય પિંગાક્ષ!",
+      "૮. જય અમિત વિક્રમ!",
+      "૯. જય ઉદધિક્રમણ!",
+      "૧૦. જય સીતા શોક વિનાશક!",
+      "૧૧. જય લક્ષ્મણ પ્રાણ દાતા!",
+      "૧૨. જય દશગ્રીવ દર્પહા!"
     ]
   },
   en: {
@@ -45,20 +45,20 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     location: "Gola Gaam · Olpad",
     footerSalutation: "Jai Shree Hanuman",
     footerBrand: "Kasht Nivaran Hanumanji",
-    namesHeading: "12 Names of Lord Hanuman", // Updated
+    namesHeading: "12 Names of Lord Hanuman",
     namesList: [
-      "Jay Hanuman!",
-      "Jay Anjani Suta!",
-      "Jay Vayu Putra!",
-      "Jay Mahabala!",
-      "Jay Rameshta!",
-      "Jay Phalguna Sakha!",
-      "Jay Pingaksha!",
-      "Jay Amit Vikrama!",
-      "Jay Udadhi Kramana!",
-      "Jay Sita Shoka Vinashaka!",
-      "Jay Lakshmana Prana Data!",
-      "Jay Dashagreeva Darpaha!"
+      "1. Jay Hanuman!",
+      "2. Jay Anjani Suta!",
+      "3. Jay Vayu Putra!",
+      "4. Jay Mahabala!",
+      "5. Jay Rameshta!",
+      "6. Jay Phalguna Sakha!",
+      "7. Jay Pingaksha!",
+      "8. Jay Amit Vikrama!",
+      "9. Jay Udadhi Kramana!",
+      "10. Jay Sita Shoka Vinashaka!",
+      "11. Jay Lakshmana Prana Data!",
+      "12. Jay Dashagreeva Darpaha!"
     ]
   },
   hi: {
@@ -69,20 +69,20 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     location: "गोला ग्राम · ओलपाड",
     footerSalutation: "जय श्री हनुमान",
     footerBrand: "कष्ट निवारण हनुमानजी",
-    namesHeading: "श्री हनुमानजी के १२ नाम", // Removed 'पाठ के'
+    namesHeading: "श्री हनुमानजी के १२ नाम",
     namesList: [
-      "जय हनुमान!",
-      "जय अंजनी सुत!",
-      "जय वायु पुत्र!",
-      "जय महाबल!",
-      "जय रामेष्ट!",
-      "जय फाल्गुन सखा!",
-      "जय पिंगाक्ष!",
-      "जय अमित विक्रम!",
-      "जय उदधिक्रमण!",
-      "जय सीता शोक विनाशक!",
-      "जय लक्ष्मण प्राण दाता!",
-      "जय दशग्रीव दर्पहा!"
+      "१. जय हनुमान!",
+      "२. जय अंजनी सुत!",
+      "३. वायु पुत्र!",
+      "४. महाबल!",
+      "५. रामेष्ट!",
+      "६. फाल्गुन सखा!",
+      "७. पिंगाक्ष!",
+      "८. अमित विक्रम!",
+      "९. उदधिक्रमण!",
+      "१०. सीता शोक विनाशक!",
+      "११. लक्ष्मण प्राण दाता!",
+      "१२. दशग्रीव दर्पहा!"
     ]
   }
 };

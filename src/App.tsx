@@ -7,6 +7,10 @@ function App() {
   const [lang, setLang] = useState<Language>('gu');
   const t = TRANSLATIONS[lang];
 
+  // Split the 12 names into left (1-6) and right (7-12) columns for side-by-side display
+  const leftCol = t.namesList.slice(0, 6);
+  const rightCol = t.namesList.slice(6, 12);
+
   return (
     <div style={{
       minHeight: '100vh',
@@ -146,24 +150,24 @@ function App() {
         </div>
 
         {/* Divider Threshold between Darshan and Names */}
-        <div style={{ width: '100%', maxWidth: '720px', marginTop: '16px' }}>
+        <div style={{ width: '100%', maxWidth: '640px', marginTop: '16px' }}>
           <hr className="threshold" />
         </div>
 
-        {/* ── SECTION 2: 12 Names of Hanuman ── */}
+        {/* ── SECTION 2: 12 Names of Hanuman (Compact Single Screen Text List) ── */}
         <section style={{
           width: '100%',
-          maxWidth: '720px',
+          maxWidth: '600px',
           textAlign: 'center',
           display: 'flex',
           flexDirection: 'column',
-          gap: '32px',
-          paddingTop: '16px',
+          gap: '24px',
+          paddingTop: '8px',
         }}>
           <div>
             <h2 style={{
               fontFamily: lang === 'en' ? "'Cormorant Garamond', Georgia, serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
-              fontSize: 'clamp(1.35rem, 3.5vw, 2rem)',
+              fontSize: 'clamp(1.25rem, 3vw, 1.75rem)',
               fontWeight: 700,
               letterSpacing: '0.08em',
               color: 'var(--drapery)',
@@ -171,42 +175,77 @@ function App() {
               {t.namesHeading}
             </h2>
             <div style={{
-              width: '60px',
-              height: '2px',
+              width: '50px',
+              height: '2.5px',
               backgroundColor: 'var(--sindoor)',
-              margin: '12px auto 0',
+              margin: '10px auto 0',
             }} />
           </div>
 
-          {/* Grid Layout of Names */}
+          {/* 
+            Two-column simple text list. 
+            Takes minimal vertical height, keeping all 12 items easily on one screen view.
+          */}
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '20px',
+            display: 'flex',
+            justifyContent: 'space-between',
             width: '100%',
+            gap: '32px',
           }}>
-            {t.namesList.map((name, index) => (
-              <div
-                key={index}
-                style={{
-                  padding: '16px 20px',
-                  background: 'var(--parchment)',
-                  border: '1px solid rgba(212, 149, 10, 0.15)',
-                  fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
-                  fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)',
-                  fontWeight: 600,
-                  color: 'var(--drapery)',
-                  letterSpacing: '0.08em',
-                  textAlign: 'center',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  minHeight: '56px',
-                }}
-              >
-                {name}
-              </div>
-            ))}
+            {/* Left Column (1-6) */}
+            <div style={{
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '12px',
+              textAlign: 'left',
+            }}>
+              {leftCol.map((name, index) => (
+                <div
+                  key={index}
+                  style={{
+                    fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+                    fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)',
+                    fontWeight: 600,
+                    color: 'var(--drapery)',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  {name}
+                </div>
+              ))}
+            </div>
+
+            {/* Divider line in middle */}
+            <div style={{
+              width: '1.5px',
+              backgroundColor: 'rgba(212, 149, 10, 0.25)',
+              alignSelf: 'stretch',
+            }} />
+
+            {/* Right Column (7-12) */}
+            <div style={{
+              flex: 1,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '12px',
+              textAlign: 'left',
+            }}>
+              {rightCol.map((name, index) => (
+                <div
+                  key={index}
+                  style={{
+                    fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+                    fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)',
+                    fontWeight: 600,
+                    color: 'var(--drapery)',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  {name}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
