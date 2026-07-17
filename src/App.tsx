@@ -78,7 +78,7 @@ function App() {
         </div>
 
         {/* Location — top right corner */}
-        <span className="caption" style={{ color: 'var(--stone)', fontWeight: 700 }}>
+        <span className="caption" style={{ color: 'var(--stone)', fontWeight: 700, letterSpacing: '0.2em' }}>
           {t.location}
         </span>
       </header>
@@ -97,7 +97,7 @@ function App() {
         <div style={{ textAlign: 'center' }}>
           <p
             className="inscription"
-            style={{ color: 'var(--sindoor)', letterSpacing: '0.28em', fontSize: '0.75rem', fontWeight: 800 }}
+            style={{ color: 'var(--sindoor)', letterSpacing: '0.35em', fontSize: '0.8rem', fontWeight: 800 }}
           >
             {t.subtitle}
           </p>
@@ -105,13 +105,26 @@ function App() {
             fontFamily: lang === 'en' ? "'Cormorant Garamond', Georgia, serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
             fontSize: 'clamp(1.75rem, 5vw, 3rem)',
             fontWeight: 700,
-            letterSpacing: '0.08em',
+            letterSpacing: '0.12em', // Added kerning space
             marginTop: '8px',
             color: 'var(--drapery)',
           }}>
             {t.title}
           </h1>
-          <div style={{ marginTop: '14px' }}>
+
+          <p style={{
+            fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+            fontSize: 'clamp(0.85rem, 2vw, 1.1rem)',
+            fontWeight: 600,
+            color: 'var(--stone-lt)',
+            letterSpacing: '0.08em', // Added kerning space
+            marginTop: '8px',
+            lineHeight: 1.5,
+          }}>
+            {t.subAddress}
+          </p>
+
+          <div style={{ marginTop: '16px' }}>
             <hr className="threshold" />
           </div>
         </div>
@@ -137,11 +150,11 @@ function App() {
       }}>
         <span
           className="script-deva"
-          style={{ fontSize: '1.0625rem', color: 'var(--stone)', fontWeight: 600 }}
+          style={{ fontSize: '1.0625rem', color: 'var(--stone)', fontWeight: 600, letterSpacing: '0.05em' }}
         >
           {t.footerSalutation}
         </span>
-        <span className="caption" style={{ color: 'var(--stone-lt)' }}>
+        <span className="caption" style={{ color: 'var(--stone-lt)', letterSpacing: '0.2em' }}>
           Kasht Nivaran
         </span>
       </footer>
