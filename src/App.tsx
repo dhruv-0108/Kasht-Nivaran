@@ -1,143 +1,107 @@
 import { DarshanCard } from './components/DarshanCard';
 
-/*
-  Layout logic:
-  ─────────────
-  Hanumanji fills all three worlds.
-  This page has one job: let him fill the screen.
-
-  Three zones:
-  1. Entry — one thin line (the dwar)
-  2. Darshan — the image, edge to edge, tall
-  3. Pranam — a Chalisa verse at large type, then the footer
-
-  Nothing competes. No grids, no sidebar, no cards.
-*/
-
 function App() {
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--cream)' }}>
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      backgroundColor: 'var(--cream)',
+    }}>
 
-      {/* ── 1. Dwar — entry mark, one line ── */}
+      {/* ── Header ── */}
       <header style={{
-        position: 'relative',
-        zIndex: 10,
-        padding: '20px clamp(20px, 5vw, 48px)',
+        padding: '18px clamp(16px, 4vw, 40px)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'baseline',
+        borderBottom: '1px solid rgba(212, 149, 10, 0.18)',
       }}>
         <span
           className="script-deva"
-          style={{
-            fontSize: 'clamp(1.125rem, 2.5vw, 1.375rem)',
-            color: 'var(--drapery)',
-            fontWeight: 400,
-            letterSpacing: '0.025em',
-          }}
+          style={{ fontSize: '1.125rem', color: 'var(--drapery)', fontWeight: 400 }}
         >
           काष्ट निवारण
         </span>
         <span className="caption">
-          Salangpur · Gujarat
+          Gola Gaam · Olpad
         </span>
       </header>
 
-      {/* ── 2. Darshan — full bleed, no padding, no box ── */}
-      <section style={{ width: '100%', lineHeight: 0 }}>
-        <DarshanCard />
-      </section>
-
-      {/* ── 3. Pranam section — large verse, generous space ── */}
-      <section style={{
+      {/* ── Main ── */}
+      <main style={{
         flex: 1,
-        padding: 'clamp(56px, 10vw, 120px) clamp(20px, 8vw, 120px)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: '32px',
+        padding: 'clamp(32px, 5vw, 64px) clamp(16px, 4vw, 40px) clamp(40px, 6vw, 80px)',
+        gap: '20px',
       }}>
 
-        {/* Thin marigold rule */}
-        <div style={{ width: '100%', maxWidth: '640px' }}>
-          <hr className="threshold" />
-        </div>
-
-        {/* The verse — LARGE. Typography that fills space. */}
-        <div style={{ textAlign: 'center', maxWidth: '760px' }}>
-
-          {/* Verse number — tiny, recessive */}
+        {/* Label above frame */}
+        <div style={{ textAlign: 'center' }}>
           <p
             className="inscription"
-            style={{
-              color: 'var(--marigold)',
-              marginBottom: '24px',
-              fontSize: '0.625rem',
-              letterSpacing: '0.3em',
-            }}
+            style={{ color: 'var(--marigold)', letterSpacing: '0.28em', fontSize: '0.625rem' }}
           >
-            हनुमान चालीसा · चौपाई २३
+            નિત્ય દર્શન
           </p>
-
-          {/* The verse in Devanagari at display scale */}
-          <p
-            className="verse-large"
-            style={{
-              marginBottom: '8px',
-              color: 'var(--drapery)',
-            }}
-          >
-            आपन तेज सम्हारो आपै।
-          </p>
-          <p
-            className="verse-large"
-            style={{
-              marginBottom: '36px',
-              color: 'var(--drapery)',
-            }}
-          >
-            तीनों लोक हाँक तें काँपै॥
-          </p>
-
-          {/* Translation — small, DM Sans, stone color */}
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 'clamp(0.875rem, 1.5vw, 1.0625rem)',
-            fontWeight: 300,
-            lineHeight: 1.75,
-            color: 'var(--stone)',
-            maxWidth: '520px',
-            margin: '0 auto',
-            letterSpacing: '0.01em',
+          <h1 style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontSize: 'clamp(1.625rem, 4vw, 2.5rem)',
+            fontWeight: 500,
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            marginTop: '8px',
+            color: 'var(--drapery)',
           }}>
-            Only you can contain your own radiance.<br />
-            All three worlds tremble at your thunderous roar.
-          </p>
+            Kasht Nivaran Dada
+          </h1>
+          <div style={{ marginTop: '14px' }}>
+            <hr className="threshold" />
+          </div>
         </div>
 
-        {/* Bottom rule */}
-        <div style={{ width: '100%', maxWidth: '640px' }}>
-          <hr className="threshold" />
+        {/*
+          Image frame — big, responsive.
+          On mobile: full width minus 32px padding total.
+          On desktop: up to 640px, enough to feel immersive.
+          Uses CSS clamp for smooth scaling between breakpoints.
+        */}
+        <div style={{
+          width: '100%',
+          maxWidth: 'min(100%, 640px)',
+        }}>
+          <DarshanCard />
         </div>
-      </section>
 
-      {/* ── 4. Footer — one line, nothing more ── */}
+        {/* Toggle hint */}
+        <p style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: '0.6875rem',
+          fontWeight: 300,
+          color: 'var(--stone)',
+          letterSpacing: '0.1em',
+          textAlign: 'center',
+          lineHeight: 1.7,
+        }}>
+          Hover for depth &nbsp;·&nbsp; स्थिर = Still &nbsp;·&nbsp; चल = Live
+        </p>
+      </main>
+
+      {/* ── Footer ── */}
       <footer style={{
-        padding: '18px clamp(20px, 5vw, 48px)',
+        padding: '16px clamp(16px, 4vw, 40px)',
+        borderTop: '1px solid rgba(212, 149, 10, 0.18)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        borderTop: '1px solid rgba(184, 169, 144, 0.25)',
       }}>
         <span
           className="script-deva"
-          style={{
-            fontSize: 'clamp(0.875rem, 1.5vw, 1.0625rem)',
-            color: 'var(--stone)',
-            fontWeight: 400,
-          }}
+          style={{ fontSize: '0.9375rem', color: 'var(--stone)', fontWeight: 400 }}
         >
-          जय श्री हनुमान
+          જય શ્રી હનુમાન
         </span>
         <span className="caption" style={{ color: 'var(--stone-lt)' }}>
           Kasht Nivaran

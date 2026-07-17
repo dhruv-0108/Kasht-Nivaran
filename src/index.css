@@ -3,23 +3,18 @@
 @tailwind utilities;
 
 /*
-  KASHT NIVARAN — Design System v2
-  ─────────────────────────────────
-  Palette: derived from the Salangpur murti photograph
+  KASHT NIVARAN — Design System
+  ─────────────────────────────
+  Palette from the actual murti photograph:
 
-  Sindoor saffron  #C4541A  — the murti's color
-  Marigold         #D4950A  — flower garlands, gold ornament
-  Temple cream     #F4ECD8  — aged temple wall, parchment
-  Parchment panel  #EAE0CC  — slightly deeper cream
-  Drapery dark     #1C1612  — the dark cloth behind the murti
-  Stone            #8A7B68  — aged temple stone
-  Stone light      #B8A990  — lighter stone, muted text
-
-  Typography scale — Perfect Fourth ratio (×1.333):
-  12 → 16 → 21 → 28 → 38 → 51 → 68 → 90 → 120px
+  Sindoor  #C4541A  — the murti
+  Marigold #D4950A  — garlands
+  Cream    #F4ECD8  — temple wall
+  Drapery  #1C1612  — dark cloth behind murti
+  Stone    #8A7B68  — aged stone
+  Stone lt #B8A990  — muted stone
 */
 
-/* ── CSS custom properties ── */
 :root {
   --sindoor:   #C4541A;
   --marigold:  #D4950A;
@@ -28,140 +23,122 @@
   --drapery:   #1C1612;
   --stone:     #8A7B68;
   --stone-lt:  #B8A990;
-
-  /* Typographic scale */
-  --text-xs:   0.75rem;    /* 12px */
-  --text-sm:   0.875rem;   /* 14px */
-  --text-base: 1rem;       /* 16px */
-  --text-md:   1.3125rem;  /* 21px */
-  --text-lg:   1.75rem;    /* 28px */
-  --text-xl:   2.375rem;   /* 38px */
-  --text-2xl:  3.1875rem;  /* 51px */
-  --text-3xl:  4.25rem;    /* 68px */
-  --text-4xl:  5.625rem;   /* 90px */
-  --text-5xl:  7.5rem;     /* 120px */
 }
 
-/* ── Base reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
 
 body {
   font-family: 'DM Sans', system-ui, sans-serif;
-  font-size: var(--text-base);
   font-weight: 300;
+  font-size: 1rem;
   line-height: 1.6;
   background-color: var(--cream);
   color: var(--drapery);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Warm radiance — very subtle, not decorative */
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212,149,10,0.06) 0%, transparent 70%);
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212,149,10,0.05) 0%, transparent 70%);
   min-height: 100vh;
 }
 
-/* Selections: sindoor */
 ::selection {
-  background: rgba(196, 84, 26, 0.15);
+  background: rgba(196, 84, 26, 0.14);
   color: var(--sindoor);
 }
 
-/* ── Typography ── */
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4 {
   font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   line-height: 1.05;
-  letter-spacing: 0.03em;
-  font-weight: 500;
   color: var(--drapery);
 }
 
-/* Devanagari — always Tiro Devanagari */
 .script-deva {
   font-family: 'Tiro Devanagari', 'Noto Serif Devanagari', serif;
 }
 
-/* Display heading — the largest scale */
-.display-heading {
+/* Inscription label — spaced uppercase Cormorant */
+.inscription {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(var(--text-3xl), 9vw, var(--text-5xl));
+  font-size: 0.625rem;
   font-weight: 500;
-  line-height: 1.0;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
 }
 
-/* Section heading */
-.section-heading {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(var(--text-xl), 5vw, var(--text-3xl));
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: 0.04em;
-}
-
-/* Verse — large Devanagari display */
-.verse-large {
-  font-family: 'Tiro Devanagari', 'Noto Serif Devanagari', serif;
-  font-size: clamp(var(--text-lg), 4vw, var(--text-2xl));
-  line-height: 1.6;
-  color: var(--drapery);
-}
-
-/* Caption — most recessive level */
+/* Caption — most recessive */
 .caption {
   font-family: 'DM Sans', sans-serif;
-  font-size: var(--text-xs);
+  font-size: 0.6875rem;
   font-weight: 400;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--stone);
 }
 
-/* Inscription — spaced uppercase Cormorant */
-.inscription {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-}
-
-/* ── The threshold line (marigold rule) ── */
+/* The marigold rule */
 .threshold {
   border: none;
   height: 1px;
   background: linear-gradient(to right, transparent, var(--marigold), transparent);
-  opacity: 0.45;
-  margin: 0;
+  opacity: 0.4;
 }
 
-/* ── Still / Live toggle — underline, not pill ── */
+/*
+  Temple frame — the core element.
+  No border-radius. A straight edge, like a stone niche.
+  Thin marigold border (1px) + inset shadow for depth.
+*/
+.temple-frame {
+  border: 1px solid var(--marigold);
+  box-shadow:
+    inset 0 2px 10px rgba(28, 22, 18, 0.07),
+    0 6px 28px rgba(28, 22, 18, 0.06),
+    0 1px 4px rgba(28, 22, 18, 0.04);
+  transition: box-shadow 0.35s ease;
+}
+
+.temple-frame:hover {
+  box-shadow:
+    inset 0 2px 14px rgba(28, 22, 18, 0.09),
+    0 12px 48px rgba(212, 149, 10, 0.09),
+    0 2px 6px rgba(28, 22, 18, 0.05);
+}
+
+/* Smooth tilt transition */
+.tilt-card {
+  transition: transform 0.18s ease-out, box-shadow 0.35s ease;
+  will-change: transform;
+}
+
+/* Still / Live toggle — underline indicator */
 .darshan-toggle {
   background: none;
   border: none;
   outline: none;
   font-family: 'Tiro Devanagari', serif;
-  font-size: 0.9375rem;  /* 15px — readable at this size */
+  font-size: 0.9375rem;
   font-weight: 400;
   cursor: pointer;
-  padding-bottom: 3px;
+  color: var(--stone);
+  padding-bottom: 2px;
   border-bottom: 1.5px solid transparent;
   transition: color 0.2s ease, border-color 0.2s ease;
-  /* Shared defaults — set per context */
 }
 
-/* On the dark image */
-.active-light   { color: var(--cream); border-bottom-color: var(--sindoor); }
-.muted-light    { color: rgba(244,236,216,0.42); }
-.muted-light:hover { color: rgba(244,236,216,0.75); }
+.darshan-toggle.active {
+  color: var(--drapery);
+  border-bottom-color: var(--sindoor);
+}
 
-/* ── Scrollbar ── */
+.darshan-toggle:hover:not(.active) {
+  color: var(--drapery);
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--parchment); }
 ::-webkit-scrollbar-thumb { background: var(--stone-lt); border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--stone); }
 
-/* ── No scrollbar utility ── */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
