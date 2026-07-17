@@ -10,13 +10,18 @@ export const DarshanCard: React.FC<DarshanCardProps> = ({ t }) => {
     <div className="relative w-full select-none">
       {/* Temple frame card */}
       <div className="temple-frame w-full overflow-hidden">
-        {/* The murti image — always live gif */}
-        <img
-          src="/darshan.gif"
-          alt={t.name}
-          className="block w-full h-auto transition-transform duration-700 ease-out hover:scale-[1.025]"
-          draggable={false}
-        />
+        {/* The murti image — picture negotiator for optimized webp */}
+        <picture>
+          <source srcSet="/darshan.webp" type="image/webp" />
+          <img
+            src="/darshan.gif"
+            alt={t.name}
+            className="block w-full h-auto transition-transform duration-700 ease-out hover:scale-[1.025]"
+            draggable={false}
+            loading="eager"
+            fetchPriority="high"
+          />
+        </picture>
 
         {/* Warm sindoor gradient at base */}
         <div
