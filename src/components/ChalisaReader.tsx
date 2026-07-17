@@ -100,6 +100,22 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
     }
   };
 
+  const getLocalizedVerseNum = (numStr: string) => {
+    const parts = numStr.split(' ');
+    const type = parts[0];
+    const num = parts[1] || '';
+
+    if (lang === 'gu') {
+      const typeStr = type === 'Doha' ? 'દોહા' : 'ચોપાઈ';
+      return `${typeStr} ${num}`;
+    }
+    if (lang === 'hi') {
+      const typeStr = type === 'Doha' ? 'दोहा' : 'चौपाई';
+      return `${typeStr} ${num}`;
+    }
+    return numStr;
+  };
+
   const activeVerse = CHALISA_VERSES[activeVerseIdx];
   const activeLangData = activeVerse[lang];
 
@@ -244,7 +260,7 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                   <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--marigold)', letterSpacing: '0.08em' }}>
-                    {verse.num.toUpperCase()}
+                    {getLocalizedVerseNum(verse.num).toUpperCase()}
                   </span>
                   {isActive && <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--sindoor)' }} />}
                 </div>
@@ -259,16 +275,6 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
                   margin: '0 0 6px 0',
                 }}>
                   {langData.sanskrit}
-                </p>
-
-                <p style={{
-                  fontSize: '0.75rem',
-                  color: 'var(--stone-lt)',
-                  textAlign: 'center',
-                  fontStyle: 'italic',
-                  margin: 0,
-                }}>
-                  {verse.translit}
                 </p>
 
                 {/* Mobile-only inline translation */}
@@ -309,7 +315,7 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '6px' }}>
               <Info size={16} style={{ color: 'var(--sindoor)' }} />
               <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--sindoor)', letterSpacing: '0.08em' }}>
-                {lang === 'gu' ? `અર્થ · ${activeVerse.num}` : lang === 'hi' ? `भावार्थ · ${activeVerse.num}` : `MEANING · ${activeVerse.num.toUpperCase()}`}
+                {lang === 'gu' ? `અર્થ · ${getLocalizedVerseNum(activeVerse.num)}` : lang === 'hi' ? `भावार्थ · ${getLocalizedVerseNum(activeVerse.num)}` : `MEANING · ${activeVerse.num.toUpperCase()}`}
               </span>
             </div>
 
