@@ -47,6 +47,10 @@ export interface Translations {
   timeEvening: string;
   timeNight: string;
   timeTravel: string;
+  benefitsBeliefText: string;
+  benefitsKaliyugText: string;
+  benefitsSalutation1: string;
+  benefitsSalutation2: string;
 }
 
 export const TRANSLATIONS: Record<Language, Translations> = {
@@ -109,7 +113,11 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     timeAfternoon: "બપોરે ૧૨ થી ૩",
     timeEvening: "સાંજે ૫ થી ૭",
     timeNight: "સૂતા પહેલા",
-    timeTravel: "યાત્રા સમયે"
+    timeTravel: "યાત્રા સમયે",
+    benefitsBeliefText: "માન્યતા છે કે શ્રી હનુમાનજીના આ બાર પવિત્ર નામોનું ૧૧ વખત શ્રદ્ધા અને ભક્તિપૂર્વક સ્મરણ કરવાથી જીવનના અનેક દુઃખો, ભયો અને સંકટોમાંથી રાહત મળે છે તથા મનમાં આત્મવિશ્વાસ અને શાંતિનો અનુભવ થાય છે.",
+    benefitsKaliyugText: "કળિયુગમાં શ્રી હનુમાનજીને સંકટમોચન અને કષ્ટ નિવારણ તરીકે પૂજવામાં આવે છે. તેમના ચરણોમાં અખંડ શ્રદ્ધા રાખી ભક્તિ કરવાથી જીવનમાં શક્તિ, સાહસ અને સકારાત્મકતા પ્રાપ્ત થાય છે.",
+    benefitsSalutation1: "🚩 બોલો પવનપુત્ર હનુમાનજી મહારાજની જય! 🚩",
+    benefitsSalutation2: "🚩 જય શ્રી રામ! 🚩"
   },
   en: {
     title: "Kasht Nivaran Hanumanji",
@@ -170,7 +178,11 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     timeAfternoon: "12 PM - 3 PM",
     timeEvening: "5 PM - 7 PM",
     timeNight: "Before Sleep",
-    timeTravel: "On Journey"
+    timeTravel: "On Journey",
+    benefitsBeliefText: "It is believed that chanting these twelve holy names of Lord Hanuman 11 times with devotion and faith grants relief from life's sorrows, fears, and obstacles, while filling the mind with confidence and peace.",
+    benefitsKaliyugText: "In Kaliyuga, Lord Hanuman is worshipped as Sankatmochan and the remover of all distress (Kasht Nivaran). Having unwavering faith at his feet grants strength, courage, and positivity.",
+    benefitsSalutation1: "🚩 Bolo Pawanputra Hanumanji Maharaj Ki Jay! 🚩",
+    benefitsSalutation2: "🚩 Jai Shree Ram! 🚩"
   },
   hi: {
     title: "कष्ट निवारण हनुमानजी",
@@ -193,13 +205,13 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       "૯. जय उदधिक्रमण!",
       "१०. जय सीता शोक विनाशक!",
       "११. जय लक्ष्मण प्राण दाता!",
-      "१२. जय दशग्रीव दर्पहा!"
+      "१२. जय दर्शनवीर दर्पहा!"
     ],
     directionsHeading: "मंदिर का पता और मार्गदर्शन",
     directionsAddress: "कष्ट निवारण हनुमानजी मंदिर, वडोलीवाक रोड, गोला गांव, गुजरात ३९४५४०",
     directionsPlusCode: "प्लस कोड: 9Q7R+2WG",
     getDirectionsBtn: "गूगल मैप्स पर खोलें",
-    copyAddressBtn: "पता कॉपी करें",
+    copyAddressBtn: "पता कॉप करें",
     addressCopied: "पता कॉपी किया गया!",
     byRoadTitle: "सड़क मार्ग",
     byRoadDesc: "ओलपाड से लगभग ७ किमी (ओलपाड से वडोलीवाक रोड होकर गोला पाटिया से २ किमी) और सूरत से लगभग २२ किमी की दूरी पर गोला गांव में स्थित है।",
@@ -231,6 +243,10 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     timeAfternoon: "दोपहर १२ से ३",
     timeEvening: "शाम ५ से ७",
     timeNight: "सोने से पहले",
-    timeTravel: "यात्रा के समय"
+    timeTravel: "यात्रा के समय",
+    benefitsBeliefText: "मान्यता है कि श्री हनुमान जी के इन बारह पवित्र नामों का ११ बार श्रद्धा और भक्तिपूर्वक स्मरण करने से जीवन के अनेक दुखों, भयों और संकटों से मुक्ति मिलती है तथा मन में आत्मविश्वास और शांति का संचार होता है।",
+    benefitsKaliyugText: "कलियुग में श्री हनुमान जी को संकटमोचन और कष्ट निवारण के रूप में पूजा जाता है। उनके चरणों में अखंड श्रद्धा रखकर भक्ति करने से जीवन में शक्ति, साहस और सकारात्मकता प्राप्त होती है।",
+    benefitsSalutation1: "🚩 बोलो पवनपुत्र हनुमानजी महाराज की जय! 🚩",
+    benefitsSalutation2: "🚩 जय श्री राम! 🚩"
   }
 };

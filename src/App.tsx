@@ -382,6 +382,49 @@ function App() {
                     </div>
                   ))}
                 </div>
+
+                {/* Divider */}
+                <div style={{
+                  width: '100%',
+                  height: '1.5px',
+                  backgroundColor: 'rgba(212, 149, 10, 0.15)',
+                  margin: '8px 0'
+                }} />
+
+                {/* Devotional Note */}
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px',
+                  textAlign: 'justify',
+                  fontSize: '0.82rem',
+                  lineHeight: '1.6',
+                  color: 'var(--stone)',
+                  padding: '16px',
+                  borderRadius: '8px',
+                  background: 'rgba(255, 255, 255, 0.45)',
+                  border: '1px dashed rgba(212, 149, 10, 0.15)',
+                }}>
+                  <p style={{ margin: 0, fontWeight: 500 }}>
+                    {t.benefitsBeliefText}
+                  </p>
+                  <p style={{ margin: 0, fontWeight: 500 }}>
+                    {t.benefitsKaliyugText}
+                  </p>
+                  <div style={{ 
+                    marginTop: '4px',
+                    fontWeight: 700, 
+                    color: 'var(--sindoor)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '4px',
+                    fontSize: '0.88rem',
+                    textAlign: 'center'
+                  }}>
+                    <span>{t.benefitsSalutation1}</span>
+                    <span>{t.benefitsSalutation2}</span>
+                  </div>
+                </div>
               </div>
 
             </section>
