@@ -7,7 +7,7 @@ export interface Translations {
   name: string;
   location: string;
   footerSalutation: string;
-  footerBrand: string; // Added translated footer branding
+  footerBrand: string;
 }
 
 export const TRANSLATIONS: Record<Language, Translations> = {
@@ -18,7 +18,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     name: "કષ્ટ નિવારણ હનુમાનજી",
     location: "ગોલા ગામ · ઓલપાડ",
     footerSalutation: "જય શ્રી હનુમાન",
-    footerBrand: "કષ્ટ નિવારણ" // Gujarati branding
+    footerBrand: "કષ્ટ નિવારણ હનુમાનજી" // Updated
   },
   en: {
     title: "Kasht Nivaran Hanumanji",
@@ -27,7 +27,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     name: "Kasht Nivaran Hanumanji",
     location: "Gola Gaam · Olpad",
     footerSalutation: "Jai Shree Hanuman",
-    footerBrand: "Kasht Nivaran" // English branding
+    footerBrand: "Kasht Nivaran Hanumanji" // Updated
   },
   hi: {
     title: "कष्ट निवारण हनुमानजी",
@@ -36,6 +36,6 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     name: "कष्ट निवारण हनुमानजी",
     location: "गोला ग्राम · ओलपाड",
     footerSalutation: "जय श्री हनुमान",
-    footerBrand: "कष्ट निवारण" // Hindi branding
+    footerBrand: "कष्ट निवारण हनुमानजी" // Updated
   }
 };
