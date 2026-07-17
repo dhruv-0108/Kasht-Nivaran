@@ -48,7 +48,7 @@ function App() {
               fontFamily: 'system-ui'
             }}
           >
-            GU
+            GUJ
           </button>
           <span style={{ color: 'rgba(212, 149, 10, 0.3)', fontSize: '0.75rem' }}>|</span>
           <button
@@ -65,7 +65,7 @@ function App() {
               fontFamily: 'system-ui'
             }}
           >
-            EN
+            ENG
           </button>
           <span style={{ color: 'rgba(212, 149, 10, 0.3)', fontSize: '0.75rem' }}>|</span>
           <button
@@ -82,7 +82,7 @@ function App() {
               fontFamily: 'system-ui'
             }}
           >
-            HI
+            HIN
           </button>
         </div>
 
