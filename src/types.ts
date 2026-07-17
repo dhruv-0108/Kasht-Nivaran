@@ -21,18 +21,18 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     footerSalutation: "જય શ્રી હનુમાન",
     footerBrand: "કષ્ટ નિવારણ હનુમાનજી",
     namesList: [
-      "૧. ઓમ હનુમાન",
-      "૨. અંજની સુત",
-      "૩. વાયુ પુત્ર",
-      "૪. મહાબલ",
-      "૫. રામેષ્ટ",
-      "૬. ફાલ્ગુન સખા",
-      "૭. પિંગાક્ષ",
-      "૮. અમિત વિક્રમ",
-      "૯. ઉદધિક્રમણ",
-      "૧૦. સીતા શોક વિનાશક",
-      "૧૧. લક્ષ્મણ પ્રાણ દાતા",
-      "૧૨. દશગ્રીવ દર્પહા"
+      "જય હનુમાન!",
+      "જય અંજની સુત!",
+      "જય વાયુ પુત્ર!",
+      "જય મહાબલ!",
+      "જય રામેષ્ટ!",
+      "જય ફાલ્ગુન સખા!",
+      "જય પિંગાક્ષ!",
+      "જય અમિત વિક્રમ!",
+      "જય ઉદધિક્રમણ!",
+      "જય સીતા શોક વિનાશક!",
+      "જય લક્ષ્મણ પ્રાણ દાતા!",
+      "જય દશગ્રીવ દર્પહા!"
     ]
   },
   en: {
@@ -44,18 +44,18 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     footerSalutation: "Jai Shree Hanuman",
     footerBrand: "Kasht Nivaran Hanumanji",
     namesList: [
-      "1. Om Hanuman",
-      "2. Anjani Suta",
-      "3. Vayu Putra",
-      "4. Mahabala",
-      "5. Rameshta",
-      "6. Phalguna Sakha",
-      "7. Pingaksha",
-      "8. Amit Vikrama",
-      "9. Udadhi Kramana",
-      "10. Sita Shoka Vinashaka",
-      "11. Lakshmana Prana Data",
-      "12. Dashagreeva Darpaha"
+      "Jay Hanuman!",
+      "Jay Anjani Suta!",
+      "Jay Vayu Putra!",
+      "Jay Mahabala!",
+      "Jay Rameshta!",
+      "Jay Phalguna Sakha!",
+      "Jay Pingaksha!",
+      "Jay Amit Vikrama!",
+      "Jay Udadhi Kramana!",
+      "Jay Sita Shoka Vinashaka!",
+      "Jay Lakshmana Prana Data!",
+      "Jay Dashagreeva Darpaha!"
     ]
   },
   hi: {
@@ -67,18 +67,18 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     footerSalutation: "जय श्री हनुमान",
     footerBrand: "कष्ट निवारण हनुमानजी",
     namesList: [
-      "१. ओम हनुमान",
-      "२. अंजनी सुत",
-      "३. वायु पुत्र",
-      "४. महाबल",
-      "५. रामेष्ट",
-      "૬. फाल्गुन सखा",
-      "७. पिंगाक्ष",
-      "८. अमित विक्रम",
-      "९. उदधिक्रमण",
-      "१०. सीता शोक विनाशक",
-      "११. लक्ष्मण प्राण दाता",
-      "१२. दशग्रीव दर्पहा"
+      "जय हनुमान!",
+      "जय अंजनी सुत!",
+      "जय वायु पुत्र!",
+      "जय महाबल!",
+      "जय रामेष्ट!",
+      "जय फाल्गुन सखा!",
+      "जय पिंगाक्ष!",
+      "जय अमित विक्रम!",
+      "जय उदधिक्रमण!",
+      "जय सीता शोक विनाशक!",
+      "जय लक्ष्मण प्राण दाता!",
+      "जय दशग्रीव दर्पहा!"
     ]
   }
 };
