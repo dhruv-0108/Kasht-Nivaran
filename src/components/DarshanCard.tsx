@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 
 export const DarshanCard: React.FC = () => {
-  const [isLive, setIsLive] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -9,10 +8,8 @@ export const DarshanCard: React.FC = () => {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const normalizedX = x / rect.width - 0.5;
-    const normalizedY = y / rect.height - 0.5;
+    const normalizedX = (e.clientX - rect.left) / rect.width - 0.5;
+    const normalizedY = (e.clientY - rect.top) / rect.height - 0.5;
     setTilt({ x: normalizedX * 8, y: -normalizedY * 8 });
   };
 
@@ -30,7 +27,6 @@ export const DarshanCard: React.FC = () => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Temple frame card */}
       <div
         className="temple-frame tilt-card w-full overflow-hidden"
         style={{
@@ -38,9 +34,9 @@ export const DarshanCard: React.FC = () => {
           transformStyle: 'preserve-3d',
         }}
       >
-        {/* The murti image — fills the frame completely */}
+        {/* Always live — the GIF */}
         <img
-          src={isLive ? '/darshan.gif' : '/frame.png'}
+          src="/darshan.gif"
           alt="Kasht Nivaran Dada, Gola Gaam Olpad"
           className="block w-full h-auto"
           style={{
@@ -51,7 +47,7 @@ export const DarshanCard: React.FC = () => {
           draggable={false}
         />
 
-        {/* Warm sindoor gradient — pools at base like sanctum lamplight */}
+        {/* Warm sindoor gradient at base */}
         <div
           aria-hidden
           style={{
@@ -59,12 +55,12 @@ export const DarshanCard: React.FC = () => {
             inset: 0,
             background: 'linear-gradient(to top, rgba(196,84,26,0.10) 0%, transparent 40%)',
             pointerEvents: 'none',
+            opacity: isHovered ? 1 : 0.6,
             transition: 'opacity 0.4s ease',
-            opacity: isHovered ? 1 : 0.5,
           }}
         />
 
-        {/* Name tag — top left */}
+        {/* Name tag — top left, high contrast */}
         <div style={{
           position: 'absolute',
           top: '14px',
@@ -72,9 +68,8 @@ export const DarshanCard: React.FC = () => {
           display: 'flex',
           alignItems: 'center',
           gap: '7px',
-          padding: '6px 11px',
-          background: 'rgba(244, 236, 216, 0.88)',
-          backdropFilter: 'blur(6px)',
+          padding: '7px 13px',
+          background: 'rgba(244, 236, 216, 0.95)',
         }}>
           <span style={{
             width: '6px',
@@ -83,40 +78,16 @@ export const DarshanCard: React.FC = () => {
             backgroundColor: 'var(--sindoor)',
             flexShrink: 0,
           }} aria-hidden />
-          <span className="inscription" style={{
-            fontSize: '0.625rem',
+          <span style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontSize: '0.6875rem',
+            fontWeight: 600,
+            letterSpacing: '0.22em',
+            textTransform: 'uppercase',
             color: 'var(--drapery)',
-            letterSpacing: '0.2em',
           }}>
             Kasht Nivaran Dada
           </span>
-        </div>
-
-        {/* Still / Live — bottom right, underline selector */}
-        <div style={{
-          position: 'absolute',
-          bottom: '14px',
-          right: '14px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '16px',
-          padding: '7px 12px',
-          background: 'rgba(244, 236, 216, 0.88)',
-          backdropFilter: 'blur(6px)',
-        }}>
-          <button
-            className={`darshan-toggle${!isLive ? ' active' : ''}`}
-            onClick={() => setIsLive(false)}
-          >
-            स्थिर
-          </button>
-          <span style={{ width: '1px', height: '10px', background: 'var(--stone-lt)' }} aria-hidden />
-          <button
-            className={`darshan-toggle${isLive ? ' active' : ''}`}
-            onClick={() => setIsLive(true)}
-          >
-            चल
-          </button>
         </div>
       </div>
     </div>

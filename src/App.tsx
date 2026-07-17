@@ -15,15 +15,15 @@ function App() {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'baseline',
-        borderBottom: '1px solid rgba(212, 149, 10, 0.18)',
+        borderBottom: '1px.5 solid rgba(212, 149, 10, 0.3)',
       }}>
         <span
           className="script-deva"
-          style={{ fontSize: '1.125rem', color: 'var(--drapery)', fontWeight: 400 }}
+          style={{ fontSize: '1.25rem', color: 'var(--drapery)', fontWeight: 600 }}
         >
           काष्ट निवारण
         </span>
-        <span className="caption">
+        <span className="caption" style={{ color: 'var(--stone)' }}>
           Gola Gaam · Olpad
         </span>
       </header>
@@ -35,21 +35,21 @@ function App() {
         flexDirection: 'column',
         alignItems: 'center',
         padding: 'clamp(32px, 5vw, 64px) clamp(16px, 4vw, 40px) clamp(40px, 6vw, 80px)',
-        gap: '20px',
+        gap: '24px',
       }}>
 
         {/* Label above frame */}
         <div style={{ textAlign: 'center' }}>
           <p
             className="inscription"
-            style={{ color: 'var(--marigold)', letterSpacing: '0.28em', fontSize: '0.625rem' }}
+            style={{ color: 'var(--sindoor)', letterSpacing: '0.28em', fontSize: '0.75rem', fontWeight: 800 }}
           >
             નિત્ય દર્શન
           </p>
           <h1 style={{
             fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontSize: 'clamp(1.625rem, 4vw, 2.5rem)',
-            fontWeight: 500,
+            fontSize: 'clamp(1.75rem, 5vw, 3rem)',
+            fontWeight: 700,
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
             marginTop: '8px',
@@ -64,9 +64,6 @@ function App() {
 
         {/*
           Image frame — big, responsive.
-          On mobile: full width minus 32px padding total.
-          On desktop: up to 640px, enough to feel immersive.
-          Uses CSS clamp for smooth scaling between breakpoints.
         */}
         <div style={{
           width: '100%',
@@ -75,31 +72,31 @@ function App() {
           <DarshanCard />
         </div>
 
-        {/* Toggle hint */}
+        {/* Info text */}
         <p style={{
           fontFamily: "'DM Sans', sans-serif",
-          fontSize: '0.6875rem',
-          fontWeight: 300,
-          color: 'var(--stone)',
+          fontSize: '0.75rem',
+          fontWeight: 500,
+          color: 'var(--stone-lt)',
           letterSpacing: '0.1em',
           textAlign: 'center',
           lineHeight: 1.7,
         }}>
-          Hover for depth &nbsp;·&nbsp; स्थिर = Still &nbsp;·&nbsp; चल = Live
+          Hover/Move cursor for depth
         </p>
       </main>
 
       {/* ── Footer ── */}
       <footer style={{
         padding: '16px clamp(16px, 4vw, 40px)',
-        borderTop: '1px solid rgba(212, 149, 10, 0.18)',
+        borderTop: '1px.5 solid rgba(212, 149, 10, 0.3)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
       }}>
         <span
           className="script-deva"
-          style={{ fontSize: '0.9375rem', color: 'var(--stone)', fontWeight: 400 }}
+          style={{ fontSize: '1.0625rem', color: 'var(--stone)', fontWeight: 600 }}
         >
           જય શ્રી હનુમાન
         </span>
