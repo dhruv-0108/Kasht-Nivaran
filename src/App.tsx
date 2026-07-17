@@ -202,95 +202,179 @@ function App() {
               <hr className="threshold" />
             </div>
 
-            {/* ── SECTION 2: 12 Names of Hanuman (Responsive Text List) ── */}
-            <section style={{
+            {/* ── SECTION 2: 12 Names of Hanuman & Benefits (Responsive Grid) ── */}
+            <section className="names-benefits-section" style={{
               width: '100%',
-              maxWidth: '600px',
-              textAlign: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '24px',
+              maxWidth: '850px',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+              gap: '32px',
               paddingTop: '8px',
+              alignItems: 'stretch',
             }}>
-              <div>
-                <h2 style={{
-                  fontFamily: lang === 'en' ? "'Cormorant Garamond', Georgia, serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
-                  fontSize: 'clamp(1.25rem, 3vw, 1.75rem)',
-                  fontWeight: 700,
-                  letterSpacing: '0.08em',
-                  color: 'var(--drapery)',
-                }}>
-                  {t.namesHeading}
-                </h2>
-                <div style={{
-                  width: '50px',
-                  height: '2.5px',
-                  backgroundColor: 'var(--sindoor)',
-                  margin: '10px auto 0',
-                }} />
-              </div>
-
-              <div className="names-container" style={{
+              
+              {/* Left Column: 12 Names Card */}
+              <div className="temple-frame" style={{
+                padding: 'clamp(20px, 4vw, 32px)',
+                background: 'rgba(244, 236, 216, 0.4)',
+                backdropFilter: 'blur(8px)',
                 display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                flexDirection: 'column',
+                gap: '24px',
+                textAlign: 'center',
               }}>
-                {/* Left Column (1-6) */}
-                <div className="names-column" style={{
-                  flex: 1,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '12px',
-                }}>
-                  {leftCol.map((name, index) => (
-                    <div
-                      key={index}
-                      className="name-item"
-                      style={{
-                        fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
-                        fontWeight: 600,
-                        color: 'var(--drapery)',
-                        letterSpacing: '0.05em',
-                        whiteSpace: 'nowrap',
-                      }}
-                    >
-                      {name}
-                    </div>
-                  ))}
+                <div>
+                  <h2 style={{
+                    fontFamily: lang === 'en' ? "'Cormorant Garamond', Georgia, serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+                    fontSize: 'clamp(1.25rem, 3vw, 1.6rem)',
+                    fontWeight: 700,
+                    letterSpacing: '0.08em',
+                    color: 'var(--drapery)',
+                  }}>
+                    {t.namesHeading}
+                  </h2>
+                  <div style={{
+                    width: '50px',
+                    height: '2.5px',
+                    backgroundColor: 'var(--sindoor)',
+                    margin: '10px auto 0',
+                  }} />
                 </div>
 
-                {/* Middle Divider Line (Only visible on desktop/tablet) */}
-                <div className="names-divider" style={{
-                  width: '1.5px',
-                  backgroundColor: 'rgba(212, 149, 10, 0.25)',
-                  alignSelf: 'stretch',
-                  margin: '0 24px',
-                }} />
-
-                {/* Right Column (7-12) */}
-                <div className="names-column" style={{
-                  flex: 1,
+                <div className="names-container" style={{
                   display: 'flex',
-                  flexDirection: 'column',
-                  gap: '12px',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}>
-                  {rightCol.map((name, index) => (
-                    <div
-                      key={index}
-                      className="name-item"
-                      style={{
-                        fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
-                        fontWeight: 600,
-                        color: 'var(--drapery)',
-                        letterSpacing: '0.05em',
+                  {/* Left Column (1-6) */}
+                  <div className="names-column" style={{
+                    flex: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px',
+                    textAlign: 'left',
+                  }}>
+                    {leftCol.map((name, index) => (
+                      <div
+                        key={index}
+                        className="name-item"
+                        style={{
+                          fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+                          fontWeight: 600,
+                          color: 'var(--drapery)',
+                          letterSpacing: '0.05em',
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {name}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Middle Divider Line */}
+                  <div className="names-divider" style={{
+                    width: '1.5px',
+                    backgroundColor: 'rgba(212, 149, 10, 0.25)',
+                    alignSelf: 'stretch',
+                    margin: '0 20px',
+                  }} />
+
+                  {/* Right Column (7-12) */}
+                  <div className="names-column" style={{
+                    flex: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px',
+                    textAlign: 'left',
+                  }}>
+                    {rightCol.map((name, index) => (
+                      <div
+                        key={index}
+                        className="name-item"
+                        style={{
+                          fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+                          fontWeight: 600,
+                          color: 'var(--drapery)',
+                          letterSpacing: '0.05em',
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {name}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Chanting Benefits Card */}
+              <div className="temple-frame" style={{
+                padding: 'clamp(20px, 4vw, 32px)',
+                background: 'rgba(244, 236, 216, 0.4)',
+                backdropFilter: 'blur(8px)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '20px',
+              }}>
+                <div style={{ textAlign: 'center' }}>
+                  <h2 style={{
+                    fontFamily: lang === 'en' ? "'Cormorant Garamond', Georgia, serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+                    fontSize: 'clamp(1.25rem, 3vw, 1.6rem)',
+                    fontWeight: 700,
+                    letterSpacing: '0.08em',
+                    color: 'var(--drapery)',
+                  }}>
+                    {t.benefitsHeading}
+                  </h2>
+                  <p style={{
+                    fontSize: '0.75rem',
+                    color: 'var(--stone-lt)',
+                    margin: '4px 0 0 0',
+                    fontStyle: 'italic',
+                  }}>
+                    {t.benefitsSub}
+                  </p>
+                  <div style={{
+                    width: '50px',
+                    height: '2.5px',
+                    backgroundColor: 'var(--sindoor)',
+                    margin: '10px auto 0',
+                  }} />
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '0.85rem' }}>
+                  {[
+                    { label: t.benefitsMorning, desc: t.benefitsMorningDesc, time: '6 AM - 9 AM' },
+                    { label: t.benefitsAfternoon, desc: t.benefitsAfternoonDesc, time: '12 PM - 3 PM' },
+                    { label: t.benefitsEvening, desc: t.benefitsEveningDesc, time: '5 PM - 7 PM' },
+                    { label: t.benefitsNight, desc: t.benefitsNightDesc, time: 'Before Sleep' },
+                    { label: t.benefitsTravel, desc: t.benefitsTravelDesc, time: 'On Journey' },
+                  ].map((benefit, idx) => (
+                    <div key={idx} style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'flex-start',
+                      gap: '12px',
+                      paddingBottom: '10px',
+                      borderBottom: idx < 4 ? '1px solid rgba(212, 149, 10, 0.12)' : 'none',
+                    }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                        <span style={{ fontWeight: 700, color: 'var(--sindoor)' }}>{benefit.label}</span>
+                        <span style={{ color: 'var(--stone)', fontSize: '0.82rem' }}>{benefit.desc}</span>
+                      </div>
+                      <span className="caption" style={{
+                        fontSize: '0.65rem',
+                        background: 'rgba(212, 149, 10, 0.08)',
+                        padding: '2px 6px',
+                        borderRadius: '4px',
+                        color: 'var(--marigold)',
                         whiteSpace: 'nowrap',
-                      }}
-                    >
-                      {name}
+                        fontWeight: 700,
+                      }}>{benefit.time}</span>
                     </div>
                   ))}
                 </div>
               </div>
+
             </section>
 
             {/* Divider Threshold between Names and Directions */}
