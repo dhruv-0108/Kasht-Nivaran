@@ -2,93 +2,95 @@ import React, { useState, useRef } from 'react';
 
 export const DarshanCard: React.FC = () => {
   const [isLive, setIsLive] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
+  const frameRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
+  const [over, setOver] = useState(false);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const normalizedX = x / rect.width - 0.5;
-    const normalizedY = y / rect.height - 0.5;
-    setTilt({ x: normalizedX * 12, y: -normalizedY * 12 });
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!frameRef.current) return;
+    const r = frameRef.current.getBoundingClientRect();
+    const nx = (e.clientX - r.left) / r.width - 0.5;   // –0.5 to 0.5
+    const ny = (e.clientY - r.top)  / r.height - 0.5;
+    // Subtle tilt — 6° max. Temples don't shake.
+    setTilt({ x: nx * 6, y: -ny * 6 });
   };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setTilt({ x: 0, y: 0 });
-  };
+  const onLeave = () => { setOver(false); setTilt({ x: 0, y: 0 }); };
 
   return (
     <div
-      ref={cardRef}
+      ref={frameRef}
       className="relative w-full select-none"
-      style={{ perspective: '1000px' }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      style={{ perspective: '900px' }}
+      onMouseEnter={() => setOver(true)}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
     >
-      {/* Card */}
+      {/* ── Temple frame ── */}
       <div
-        className="relative w-full overflow-hidden rounded-3xl bg-white transition-all duration-200 ease-out"
+        className="temple-frame tilt-card w-full overflow-hidden"
         style={{
-          transform: `rotateY(${tilt.x}deg) rotateX(${tilt.y}deg) scale3d(${isHovered ? 1.015 : 1}, ${isHovered ? 1.015 : 1}, 1)`,
-          boxShadow: isHovered
-            ? '0 32px 64px rgba(0,0,0,0.07), 0 8px 16px rgba(0,0,0,0.03), 0 0 0 1px rgba(0,0,0,0.03)'
-            : '0 8px 32px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.02), 0 0 0 1px rgba(0,0,0,0.02)',
+          transform: `rotateY(${tilt.x}deg) rotateX(${tilt.y}deg)`,
           transformStyle: 'preserve-3d',
         }}
       >
-        {/* Subtle gold halo on hover */}
-        <div
-          className="absolute inset-0 pointer-events-none transition-opacity duration-700 z-10"
-          style={{
-            background: 'radial-gradient(circle at 50% 40%, rgba(184,146,83,0.12) 0%, transparent 65%)',
-            opacity: isHovered ? 1 : 0,
-          }}
-        />
-
-        {/* Image */}
+        {/* ── Murti image ── */}
         <img
           src={isLive ? '/darshan.gif' : '/frame.png'}
-          alt="Kashtbhanjan Dev — Salangpur"
-          className="w-full h-full object-cover block transition-transform duration-700"
-          style={{ transform: isHovered ? 'scale(1.04)' : 'scale(1)' }}
+          alt="Kashtbhanjan Dev Hanumanji, Salangpur"
+          className="block w-full h-auto"
+          style={{
+            transform: over ? 'scale(1.025)' : 'scale(1)',
+            transition: 'transform 0.6s ease',
+            display: 'block',
+          }}
           draggable={false}
         />
 
-        {/* Still / Live pill — bottom-right */}
-        <div className="absolute bottom-4 right-4 z-20 flex space-x-1.5 p-1 rounded-full bg-white/80 backdrop-blur-md border border-black/[0.06] shadow-sm">
-          <button
-            onClick={() => setIsLive(false)}
-            className={`px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase transition-smooth ${
-              !isLive
-                ? 'bg-black text-white shadow-sm'
-                : 'text-[#111111]/50 hover:text-[#111111]'
-            }`}
-          >
-            Still
-          </button>
-          <button
-            onClick={() => setIsLive(true)}
-            className={`px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase transition-smooth ${
-              isLive
-                ? 'bg-[#B89253] text-white shadow-sm'
-                : 'text-[#111111]/50 hover:text-[#111111]'
-            }`}
-          >
-            Live
-          </button>
-        </div>
+        {/*
+          Subtle sindoor gradient at the bottom — like the warm light
+          that pools at the base of a murti in a sanctum.
+        */}
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(to top, rgba(196,84,26,0.08) 0%, transparent 35%)',
+            pointerEvents: 'none',
+            transition: 'opacity 0.4s ease',
+            opacity: over ? 1 : 0.5,
+          }}
+        />
 
-        {/* Name tag — top-left */}
-        <div className="absolute top-4 left-4 z-20 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-black/[0.06] shadow-sm flex items-center space-x-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#B89253] animate-pulse" />
-          <span className="text-[10px] font-bold tracking-widest uppercase text-[#111111]/80">
-            Kashtbhanjan Dev · Salangpur
-          </span>
+        {/* ── Still / Live selector — underline, not pill ── */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '14px',
+            right: '14px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '16px',
+            padding: '6px 10px',
+            background: 'rgba(244, 236, 216, 0.82)',
+            backdropFilter: 'blur(6px)',
+          }}
+        >
+          <button
+            className={`darshan-toggle${!isLive ? ' active' : ''}`}
+            onClick={() => setIsLive(false)}
+          >
+            स्थिर
+          </button>
+          <span style={{ width: '1px', height: '10px', background: 'var(--stone-lt)' }} aria-hidden />
+          <button
+            className={`darshan-toggle${isLive ? ' active' : ''}`}
+            onClick={() => setIsLive(true)}
+          >
+            चल
+          </button>
         </div>
       </div>
     </div>
