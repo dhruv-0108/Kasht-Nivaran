@@ -53,15 +53,13 @@ export const VisitorCounter: React.FC<VisitorCounterProps> = ({ t }) => {
       display: 'flex',
       alignItems: 'center',
       gap: '6px',
-      background: 'rgba(212, 149, 10, 0.08)',
-      padding: '5px 12px',
-      borderRadius: '12px',
-      border: '1px solid rgba(212, 149, 10, 0.15)',
-      fontSize: '0.8rem',
+      fontSize: '0.75rem',
       fontWeight: 600,
       color: 'var(--stone-lt)',
+      textTransform: 'uppercase',
+      letterSpacing: '0.12em',
     }}>
-      <Eye size={12} style={{ color: 'var(--sindoor)', opacity: 0.8 }} />
+      <Eye size={12} style={{ color: 'var(--stone-lt)', opacity: 0.8 }} />
       <span>
         {totalDarshans !== null ? totalDarshans.toLocaleString() : '—'} {t.visitors}
       </span>
