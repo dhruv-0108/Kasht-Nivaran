@@ -21,7 +21,7 @@ function App() {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        borderBottom: '1.5px solid rgba(0, 0, 0, 0.06)',
+        borderBottom: '1.5px solid rgba(212, 149, 10, 0.3)',
       }}>
         {/* Language selector — top left corner */}
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
@@ -41,7 +41,7 @@ function App() {
           >
             ગુજરાતી
           </button>
-          <span style={{ color: 'rgba(0, 0, 0, 0.1)', fontSize: '0.75rem' }}>|</span>
+          <span style={{ color: 'rgba(212, 149, 10, 0.3)', fontSize: '0.75rem' }}>|</span>
           <button
             onClick={() => setLang('en')}
             style={{
@@ -58,7 +58,7 @@ function App() {
           >
             EN
           </button>
-          <span style={{ color: 'rgba(0, 0, 0, 0.1)', fontSize: '0.75rem' }}>|</span>
+          <span style={{ color: 'rgba(212, 149, 10, 0.3)', fontSize: '0.75rem' }}>|</span>
           <button
             onClick={() => setLang('hi')}
             style={{
@@ -191,7 +191,7 @@ function App() {
                 style={{
                   padding: '16px 20px',
                   background: 'var(--parchment)',
-                  border: '1px solid rgba(0, 0, 0, 0.06)',
+                  border: '1px solid rgba(212, 149, 10, 0.15)',
                   fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
                   fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)',
                   fontWeight: 600,
@@ -202,7 +202,6 @@ function App() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   minHeight: '56px',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.02)'
                 }}
               >
                 {name}
@@ -216,7 +215,7 @@ function App() {
       {/* ── Footer ── */}
       <footer style={{
         padding: '16px clamp(16px, 4vw, 40px)',
-        borderTop: '1.5px solid rgba(0, 0, 0, 0.06)',
+        borderTop: '1.5px solid rgba(212, 149, 10, 0.3)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
