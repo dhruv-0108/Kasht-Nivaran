@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Eye } from 'lucide-react';
+import { doc, getDoc, setDoc, updateDoc, increment, collection, onSnapshot, deleteDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase';
 import type { Translations } from '../types';
 
 interface VisitorCounterProps {
@@ -7,35 +9,110 @@ interface VisitorCounterProps {
 }
 
 export const VisitorCounter: React.FC<VisitorCounterProps> = ({ t }) => {
-  const [activeDevotees, setActiveDevotees] = useState(12);
+  const [activeDevotees, setActiveDevotees] = useState(1);
   const [totalDarshans, setTotalDarshans] = useState(18432);
 
   useEffect(() => {
-    // Simulated live devotee fluctuations
-    const devoteeInterval = setInterval(() => {
-      setActiveDevotees(prev => {
-        const delta = Math.floor(Math.random() * 3) - 1; // -1, 0, or +1
-        const nextVal = prev + delta;
-        return Math.max(5, Math.min(25, nextVal)); // clamp between 5 and 25
-      });
-    }, 4000);
+    // ── 1. Total Visits Counter Logic ──
+    const counterRef = doc(db, 'visitors', 'counters');
+    
+    const initializeAndIncrement = async () => {
+      // Check if session already registered a visit to avoid double increments on hot-reload/navigation
+      const sessionVisited = sessionStorage.getItem('has_visited_kasht_nivaran');
+      if (sessionVisited) return;
 
-    // Persist total visits with local storage
-    const storageKey = 'kasht_nivaran_darshan_visits';
-    const savedVisits = localStorage.getItem(storageKey);
-    const initialBase = 18432;
+      try {
+        const docSnap = await getDoc(counterRef);
+        if (!docSnap.exists()) {
+          // Initialize with a realistic starting number
+          await setDoc(counterRef, { total_visits: 18432 });
+        } else {
+          await updateDoc(counterRef, { total_visits: increment(1) });
+        }
+        sessionStorage.setItem('has_visited_kasht_nivaran', 'true');
+      } catch (e) {
+        console.error("Failed to update total visit counter:", e);
+      }
+    };
 
-    if (savedVisits) {
-      const current = parseInt(savedVisits, 10);
-      const updated = current + 1;
-      setTotalDarshans(updated);
-      localStorage.setItem(storageKey, updated.toString());
-    } else {
-      localStorage.setItem(storageKey, initialBase.toString());
-      setTotalDarshans(initialBase);
+    initializeAndIncrement();
+
+    // Listen to live total visit updates
+    const unsubVisits = onSnapshot(counterRef, (snapshot) => {
+      if (snapshot.exists()) {
+        setTotalDarshans(snapshot.data().total_visits);
+      }
+    }, (error) => {
+      console.error("Visits listener error:", error);
+    });
+
+    // ── 2. Realtime Active Devotees Presence Logic ──
+    // Use sessionStorage to persist sessionId across tabs/reloads in the same session
+    let sessionId = sessionStorage.getItem('kasht_nivaran_session_id');
+    if (!sessionId) {
+      sessionId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      sessionStorage.setItem('kasht_nivaran_session_id', sessionId);
     }
 
-    return () => clearInterval(devoteeInterval);
+    const sessionDocRef = doc(db, 'active_sessions', sessionId);
+
+    // Function to update heartbeat
+    const sendHeartbeat = async () => {
+      try {
+        await setDoc(sessionDocRef, {
+          lastActive: serverTimestamp()
+        });
+      } catch (e) {
+        console.error("Failed to send presence heartbeat:", e);
+      }
+    };
+
+    // Send initial heartbeat
+    sendHeartbeat();
+
+    // Send periodic heartbeats every 35 seconds
+    const heartbeatInterval = setInterval(sendHeartbeat, 35000);
+
+    // Listen to all active sessions in real time
+    const activeSessionsCol = collection(db, 'active_sessions');
+    const unsubActive = onSnapshot(activeSessionsCol, (snapshot) => {
+      const now = Date.now();
+      let activeCount = 0;
+      
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.lastActive) {
+          // Convert Firebase Timestamp to milliseconds
+          const lastActiveTime = data.lastActive.toDate ? data.lastActive.toDate().getTime() : data.lastActive;
+          // If active in the last 70 seconds, count as active
+          if (now - lastActiveTime < 70000) {
+            activeCount++;
+          }
+        }
+      });
+      
+      // Always guarantee at least 1 (the current user)
+      setActiveDevotees(Math.max(1, activeCount));
+    }, (error) => {
+      console.error("Active sessions listener error:", error);
+    });
+
+    // Clean up on tab close
+    const handleUnload = () => {
+      // Use beacon/synchronous call or let it time out if browser kills it.
+      // Firestore deleteDoc is asynchronous but we trigger it nonetheless.
+      deleteDoc(sessionDocRef).catch(() => {});
+    };
+
+    window.addEventListener('beforeunload', handleUnload);
+
+    return () => {
+      clearInterval(heartbeatInterval);
+      unsubVisits();
+      unsubActive();
+      window.removeEventListener('beforeunload', handleUnload);
+      handleUnload();
+    };
   }, []);
 
   return (
@@ -59,7 +136,6 @@ export const VisitorCounter: React.FC<VisitorCounterProps> = ({ t }) => {
         borderRadius: '12px',
         border: '1px solid rgba(212, 149, 10, 0.15)',
       }}>
-        {/* Pulsing indicator */}
         <span style={{
           position: 'relative',
           display: 'flex',
