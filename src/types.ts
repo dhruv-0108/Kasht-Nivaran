@@ -8,7 +8,7 @@ export interface Translations {
   location: string;
   footerSalutation: string;
   footerBrand: string;
-  namesHeading: string; // Added heading for the names section
+  namesHeading: string;
   namesList: string[];
 }
 
@@ -21,7 +21,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     location: "ગોલા ગામ · ઓલપાડ",
     footerSalutation: "જય શ્રી હનુમાન",
     footerBrand: "કષ્ટ નિવારણ હનુમાનજી",
-    namesHeading: "શ્રી હનુમાનજીના ૧૨ પાઠના નામ",
+    namesHeading: "શ્રી હનુમાનજીના ૧૨ નામ", // Removed 'પાઠના'
     namesList: [
       "જય હનુમાન!",
       "જય અંજની સુત!",
@@ -45,7 +45,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     location: "Gola Gaam · Olpad",
     footerSalutation: "Jai Shree Hanuman",
     footerBrand: "Kasht Nivaran Hanumanji",
-    namesHeading: "12 Sacred Names of Lord Hanuman",
+    namesHeading: "12 Names of Lord Hanuman", // Updated
     namesList: [
       "Jay Hanuman!",
       "Jay Anjani Suta!",
@@ -69,7 +69,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     location: "गोला ग्राम · ओलपाड",
     footerSalutation: "जय श्री हनुमान",
     footerBrand: "कष्ट निवारण हनुमानजी",
-    namesHeading: "श्री हनुमानजी के १२ पाठ के नाम",
+    namesHeading: "श्री हनुमानजी के १२ नाम", // Removed 'पाठ के'
     namesList: [
       "जय हनुमान!",
       "जय अंजनी सुत!",
