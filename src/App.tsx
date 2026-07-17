@@ -1,164 +1,145 @@
 import { DarshanCard } from './components/DarshanCard';
 
 /*
-  Layout intention:
-  You enter a temple. You pass through the dwar (doorway).
-  You see the garbhagriha (sanctum). You take darshan.
-  Nothing competes with the murti. The architecture serves the deity.
+  Layout logic:
+  ─────────────
+  Hanumanji fills all three worlds.
+  This page has one job: let him fill the screen.
+
+  Three zones:
+  1. Entry — one thin line (the dwar)
+  2. Darshan — the image, edge to edge, tall
+  3. Pranam — a Chalisa verse at large type, then the footer
+
+  Nothing competes. No grids, no sidebar, no cards.
 */
 
 function App() {
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        backgroundColor: 'var(--cream)',
-      }}
-    >
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--cream)' }}>
 
-      {/* ── Pravesha — entry line ── */}
-      <header
-        style={{
-          padding: '18px 28px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'baseline',
-          borderBottom: '1px solid rgba(212, 149, 10, 0.18)',
-        }}
-      >
-        {/* Temple name in Devanagari — feels carved, not printed */}
+      {/* ── 1. Dwar — entry mark, one line ── */}
+      <header style={{
+        position: 'relative',
+        zIndex: 10,
+        padding: '20px clamp(20px, 5vw, 48px)',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'baseline',
+      }}>
         <span
           className="script-deva"
           style={{
-            fontSize: '1.125rem',
+            fontSize: 'clamp(1.125rem, 2.5vw, 1.375rem)',
             color: 'var(--drapery)',
             fontWeight: 400,
-            letterSpacing: '0.02em',
+            letterSpacing: '0.025em',
           }}
         >
           काष्ट निवारण
         </span>
-
-        {/* Location — like a plaque, not a badge */}
-        <span
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: '0.6875rem',
-            fontWeight: 400,
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            color: 'var(--stone)',
-          }}
-        >
+        <span className="caption">
           Salangpur · Gujarat
         </span>
       </header>
 
-      {/* ── Garbhagriha — the sanctum ── */}
-      <main
-        style={{
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '48px 24px 56px',
-        }}
-      >
+      {/* ── 2. Darshan — full bleed, no padding, no box ── */}
+      <section style={{ width: '100%', lineHeight: 0 }}>
+        <DarshanCard />
+      </section>
 
-        {/* Inscription above the frame */}
-        <div style={{ marginBottom: '20px', textAlign: 'center' }}>
+      {/* ── 3. Pranam section — large verse, generous space ── */}
+      <section style={{
+        flex: 1,
+        padding: 'clamp(56px, 10vw, 120px) clamp(20px, 8vw, 120px)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '32px',
+      }}>
+
+        {/* Thin marigold rule */}
+        <div style={{ width: '100%', maxWidth: '640px' }}>
+          <hr className="threshold" />
+        </div>
+
+        {/* The verse — LARGE. Typography that fills space. */}
+        <div style={{ textAlign: 'center', maxWidth: '760px' }}>
+
+          {/* Verse number — tiny, recessive */}
           <p
             className="inscription"
             style={{
-              fontSize: '0.625rem',      /* 10px */
               color: 'var(--marigold)',
-              marginBottom: '10px',
-              letterSpacing: '0.28em',
+              marginBottom: '24px',
+              fontSize: '0.625rem',
+              letterSpacing: '0.3em',
             }}
           >
-            नित्य दर्शन
+            हनुमान चालीसा · चौपाई २३
           </p>
-          <h1
+
+          {/* The verse in Devanagari at display scale */}
+          <p
+            className="verse-large"
             style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontSize: 'clamp(1.5rem, 4vw, 2.25rem)',
-              fontWeight: 500,
+              marginBottom: '8px',
               color: 'var(--drapery)',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              margin: 0,
             }}
           >
-            Kashtbhanjan Dev
-          </h1>
+            आपन तेज सम्हारो आपै।
+          </p>
+          <p
+            className="verse-large"
+            style={{
+              marginBottom: '36px',
+              color: 'var(--drapery)',
+            }}
+          >
+            तीनों लोक हाँक तें काँपै॥
+          </p>
 
-          {/* Threshold — thin marigold rule */}
-          <div style={{ marginTop: '12px', width: '100%' }}>
-            <hr className="threshold" />
-          </div>
-        </div>
-
-        {/* The darshan frame — constrained like a temple niche */}
-        <div
-          style={{
-            width: '100%',
-            maxWidth: '380px',
-          }}
-        >
-          <DarshanCard />
-        </div>
-
-        {/* Below-frame label */}
-        <p
-          style={{
+          {/* Translation — small, DM Sans, stone color */}
+          <p style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: '0.6875rem',
+            fontSize: 'clamp(0.875rem, 1.5vw, 1.0625rem)',
             fontWeight: 300,
+            lineHeight: 1.75,
             color: 'var(--stone)',
-            letterSpacing: '0.1em',
-            marginTop: '18px',
-            textAlign: 'center',
-            lineHeight: 1.7,
-          }}
-        >
-          Hover for depth &nbsp;·&nbsp; स्थिर = Still &nbsp;·&nbsp; चल = Live
-        </p>
-      </main>
+            maxWidth: '520px',
+            margin: '0 auto',
+            letterSpacing: '0.01em',
+          }}>
+            Only you can contain your own radiance.<br />
+            All three worlds tremble at your thunderous roar.
+          </p>
+        </div>
 
-      {/* ── Pranam — the leaving line ── */}
-      <footer
-        style={{
-          padding: '16px 28px',
-          borderTop: '1px solid rgba(212, 149, 10, 0.18)',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
+        {/* Bottom rule */}
+        <div style={{ width: '100%', maxWidth: '640px' }}>
+          <hr className="threshold" />
+        </div>
+      </section>
+
+      {/* ── 4. Footer — one line, nothing more ── */}
+      <footer style={{
+        padding: '18px clamp(20px, 5vw, 48px)',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        borderTop: '1px solid rgba(184, 169, 144, 0.25)',
+      }}>
         <span
           className="script-deva"
           style={{
-            fontSize: '0.875rem',
+            fontSize: 'clamp(0.875rem, 1.5vw, 1.0625rem)',
             color: 'var(--stone)',
             fontWeight: 400,
           }}
         >
           जय श्री हनुमान
         </span>
-
-        <span
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: '0.625rem',
-            fontWeight: 400,
-            letterSpacing: '0.14em',
-            textTransform: 'uppercase',
-            color: 'var(--stone-lt)',
-          }}
-        >
+        <span className="caption" style={{ color: 'var(--stone-lt)' }}>
           Kasht Nivaran
         </span>
       </footer>
