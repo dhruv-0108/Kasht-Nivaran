@@ -1,63 +1,22 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 
 export const DarshanCard: React.FC = () => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const normalizedX = (e.clientX - rect.left) / rect.width - 0.5;
-    const normalizedY = (e.clientY - rect.top) / rect.height - 0.5;
-    setTilt({ x: normalizedX * 8, y: -normalizedY * 8 });
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setTilt({ x: 0, y: 0 });
-  };
-
   return (
-    <div
-      ref={cardRef}
-      className="relative w-full select-none"
-      style={{ perspective: '1000px' }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div
-        className="temple-frame tilt-card w-full overflow-hidden"
-        style={{
-          transform: `rotateY(${tilt.x}deg) rotateX(${tilt.y}deg) scale(${isHovered ? 1.012 : 1})`,
-          transformStyle: 'preserve-3d',
-        }}
-      >
-        {/* Always live — the GIF */}
+    <div className="relative w-full select-none">
+      {/* Temple frame card */}
+      <div className="temple-frame w-full overflow-hidden">
+        {/* The murti image — fills the frame completely */}
         <img
           src="/darshan.gif"
           alt="Kasht Nivaran Dada, Gola Gaam Olpad"
-          className="block w-full h-auto"
-          style={{
-            transform: isHovered ? 'scale(1.03)' : 'scale(1)',
-            transition: 'transform 0.6s ease',
-            display: 'block',
-          }}
+          className="block w-full h-auto transition-transform duration-700 ease-out hover:scale-[1.025]"
           draggable={false}
         />
 
         {/* Warm sindoor gradient at base */}
         <div
           aria-hidden
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(to top, rgba(196,84,26,0.10) 0%, transparent 40%)',
-            pointerEvents: 'none',
-            opacity: isHovered ? 1 : 0.6,
-            transition: 'opacity 0.4s ease',
-          }}
+          className="absolute inset-0 pointer-events-none transition-opacity duration-500 bg-gradient-to-t from-[rgba(196,84,26,0.12)] to-transparent"
         />
 
         {/* Name tag — top left, high contrast */}

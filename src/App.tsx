@@ -15,13 +15,13 @@ function App() {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'baseline',
-        borderBottom: '1px.5 solid rgba(212, 149, 10, 0.3)',
+        borderBottom: '1.5px solid rgba(212, 149, 10, 0.3)',
       }}>
         <span
           className="script-deva"
           style={{ fontSize: '1.25rem', color: 'var(--drapery)', fontWeight: 600 }}
         >
-          काष्ट निवारण
+          काष्ट निवारણ
         </span>
         <span className="caption" style={{ color: 'var(--stone)' }}>
           Gola Gaam · Olpad
@@ -71,25 +71,12 @@ function App() {
         }}>
           <DarshanCard />
         </div>
-
-        {/* Info text */}
-        <p style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: '0.75rem',
-          fontWeight: 500,
-          color: 'var(--stone-lt)',
-          letterSpacing: '0.1em',
-          textAlign: 'center',
-          lineHeight: 1.7,
-        }}>
-          Hover/Move cursor for depth
-        </p>
       </main>
 
       {/* ── Footer ── */}
       <footer style={{
         padding: '16px clamp(16px, 4vw, 40px)',
-        borderTop: '1px.5 solid rgba(212, 149, 10, 0.3)',
+        borderTop: '1.5px solid rgba(212, 149, 10, 0.3)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
