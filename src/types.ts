@@ -1,41 +1,33 @@
-export interface KashtItem {
-  id: string;
+export type Language = 'gu' | 'en' | 'hi';
+
+export interface Translations {
   title: string;
-  description: string;
-  createdAt: string;
-  status: 'active' | 'surrendered' | 'resolved';
-  surrenderedAt: string | null;
-  resolvedAt: string | null;
-  gratitudeNote: string | null;
+  subtitle: string;
+  name: string;
+  location: string;
+  footerSalutation: string;
 }
 
-export interface JapaSession {
-  id: string;
-  date: string; // YYYY-MM-DD
-  count: number;
-}
-
-export interface JapaLog {
-  totalChants: number;
-  sessions: JapaSession[];
-}
-
-export interface Sankalpa {
-  id: string;
-  title: string;
-  description: string;
-  type: 'japa' | 'chalisa';
-  targetPerDay: number; // e.g. 108 chants or 11 recitations
-  targetDays: number; // e.g. 21, 40, 108 days
-  startDate: string; // YYYY-MM-DD
-  endDate: string; // YYYY-MM-DD
-  logs: { [date: string]: number }; // Maps date (YYYY-MM-DD) to count achieved
-  status: 'active' | 'completed' | 'abandoned';
-}
-
-export interface AppState {
-  kashts: KashtItem[];
-  japa: JapaLog;
-  sankalpas: Sankalpa[];
-  chalisaLogs: { [date: string]: number }; // Maps YYYY-MM-DD to count of Chalisa recitations
-}
+export const TRANSLATIONS: Record<Language, Translations> = {
+  gu: {
+    title: "કષ્ટ નિવારણ",
+    subtitle: "નિત્ય દર્શન",
+    name: "કષ્ટભંજન દેવ (દાદા)",
+    location: "ગોલા ગામ · ઓલપાડ",
+    footerSalutation: "જય શ્રી હનુમાન"
+  },
+  en: {
+    title: "Kasht Nivaran",
+    subtitle: "Nitya Darshan",
+    name: "Kasht Nivaran Dada",
+    location: "Gola Gaam · Olpad",
+    footerSalutation: "Jai Shree Hanuman"
+  },
+  hi: {
+    title: "कष्ट निवारण",
+    subtitle: "नित्य दर्शन",
+    name: "कष्टभंजन देव (दादा)",
+    location: "गोला ग्राम · ओलपाड",
+    footerSalutation: "जय श्री हनुमान"
+  }
+};

@@ -1,6 +1,12 @@
+import { useState } from 'react';
 import { DarshanCard } from './components/DarshanCard';
+import { TRANSLATIONS } from './types';
+import type { Language } from './types';
 
 function App() {
+  const [lang, setLang] = useState<Language>('gu');
+  const t = TRANSLATIONS[lang];
+
   return (
     <div style={{
       minHeight: '100vh',
@@ -14,17 +20,66 @@ function App() {
         padding: '18px clamp(16px, 4vw, 40px)',
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'baseline',
+        alignItems: 'center',
         borderBottom: '1.5px solid rgba(212, 149, 10, 0.3)',
       }}>
-        <span
-          className="script-deva"
-          style={{ fontSize: '1.25rem', color: 'var(--drapery)', fontWeight: 600 }}
-        >
-          काष्ट निवारણ
-        </span>
-        <span className="caption" style={{ color: 'var(--stone)' }}>
-          Gola Gaam · Olpad
+        {/* Language selector — top left corner */}
+        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          <button
+            onClick={() => setLang('gu')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '0.75rem',
+              fontWeight: lang === 'gu' ? 800 : 500,
+              color: lang === 'gu' ? 'var(--sindoor)' : 'var(--stone)',
+              borderBottom: lang === 'gu' ? '1.5px solid var(--sindoor)' : '1.5px solid transparent',
+              paddingBottom: '2px',
+              fontFamily: 'system-ui'
+            }}
+          >
+            ગુજરાતી
+          </button>
+          <span style={{ color: 'rgba(212, 149, 10, 0.3)', fontSize: '0.75rem' }}>|</span>
+          <button
+            onClick={() => setLang('en')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '0.75rem',
+              fontWeight: lang === 'en' ? 800 : 500,
+              color: lang === 'en' ? 'var(--sindoor)' : 'var(--stone)',
+              borderBottom: lang === 'en' ? '1.5px solid var(--sindoor)' : '1.5px solid transparent',
+              paddingBottom: '2px',
+              fontFamily: 'system-ui'
+            }}
+          >
+            EN
+          </button>
+          <span style={{ color: 'rgba(212, 149, 10, 0.3)', fontSize: '0.75rem' }}>|</span>
+          <button
+            onClick={() => setLang('hi')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: '0.75rem',
+              fontWeight: lang === 'hi' ? 800 : 500,
+              color: lang === 'hi' ? 'var(--sindoor)' : 'var(--stone)',
+              borderBottom: lang === 'hi' ? '1.5px solid var(--sindoor)' : '1.5px solid transparent',
+              paddingBottom: '2px',
+              fontFamily: 'system-ui'
+            }}
+          >
+            हिन्दी
+          </button>
+        </div>
+
+        {/* Location — top right corner */}
+        <span className="caption" style={{ color: 'var(--stone)', fontWeight: 700 }}>
+          {t.location}
         </span>
       </header>
 
@@ -44,18 +99,17 @@ function App() {
             className="inscription"
             style={{ color: 'var(--sindoor)', letterSpacing: '0.28em', fontSize: '0.75rem', fontWeight: 800 }}
           >
-            નિત્ય દર્શન
+            {t.subtitle}
           </p>
           <h1 style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontFamily: lang === 'en' ? "'Cormorant Garamond', Georgia, serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
             fontSize: 'clamp(1.75rem, 5vw, 3rem)',
             fontWeight: 700,
             letterSpacing: '0.08em',
-            textTransform: 'uppercase',
             marginTop: '8px',
             color: 'var(--drapery)',
           }}>
-            Kasht Nivaran Dada
+            {t.title}
           </h1>
           <div style={{ marginTop: '14px' }}>
             <hr className="threshold" />
@@ -69,7 +123,7 @@ function App() {
           width: '100%',
           maxWidth: 'min(100%, 640px)',
         }}>
-          <DarshanCard />
+          <DarshanCard t={t} />
         </div>
       </main>
 
@@ -85,7 +139,7 @@ function App() {
           className="script-deva"
           style={{ fontSize: '1.0625rem', color: 'var(--stone)', fontWeight: 600 }}
         >
-          જય શ્રી હનુમાન
+          {t.footerSalutation}
         </span>
         <span className="caption" style={{ color: 'var(--stone-lt)' }}>
           Kasht Nivaran

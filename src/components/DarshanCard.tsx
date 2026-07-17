@@ -1,6 +1,11 @@
 import React from 'react';
+import type { Translations } from '../types';
 
-export const DarshanCard: React.FC = () => {
+interface DarshanCardProps {
+  t: Translations;
+}
+
+export const DarshanCard: React.FC<DarshanCardProps> = ({ t }) => {
   return (
     <div className="relative w-full select-none">
       {/* Temple frame card */}
@@ -8,7 +13,7 @@ export const DarshanCard: React.FC = () => {
         {/* The murti image — fills the frame completely */}
         <img
           src="/darshan.gif"
-          alt="Kasht Nivaran Dada, Gola Gaam Olpad"
+          alt={t.name}
           className="block w-full h-auto transition-transform duration-700 ease-out hover:scale-[1.025]"
           draggable={false}
         />
@@ -45,7 +50,7 @@ export const DarshanCard: React.FC = () => {
             textTransform: 'uppercase',
             color: 'var(--drapery)',
           }}>
-            Kasht Nivaran Dada
+            {t.name}
           </span>
         </div>
       </div>
