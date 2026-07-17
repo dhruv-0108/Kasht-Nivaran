@@ -10,7 +10,7 @@ interface VisitorCounterProps {
 
 export const VisitorCounter: React.FC<VisitorCounterProps> = ({ t }) => {
   const [activeDevotees, setActiveDevotees] = useState(1);
-  const [totalDarshans, setTotalDarshans] = useState(18432);
+  const [totalDarshans, setTotalDarshans] = useState<number | null>(null);
 
   useEffect(() => {
     // ── 1. Total Visits Counter Logic ──
@@ -24,8 +24,8 @@ export const VisitorCounter: React.FC<VisitorCounterProps> = ({ t }) => {
       try {
         const docSnap = await getDoc(counterRef);
         if (!docSnap.exists()) {
-          // Initialize with a realistic starting number
-          await setDoc(counterRef, { total_visits: 18432 });
+          // Initialize with starting number 1
+          await setDoc(counterRef, { total_visits: 1 });
         } else {
           await updateDoc(counterRef, { total_visits: increment(1) });
         }
@@ -178,7 +178,7 @@ export const VisitorCounter: React.FC<VisitorCounterProps> = ({ t }) => {
       }}>
         <Eye size={12} style={{ color: 'var(--sindoor)', opacity: 0.8 }} />
         <span>
-          {totalDarshans.toLocaleString()} {t.totalDarshans}
+          {totalDarshans !== null ? totalDarshans.toLocaleString() : '—'} {t.totalDarshans}
         </span>
       </div>
 
