@@ -243,8 +243,9 @@ function App() {
 
                 <div className="names-container" style={{
                   display: 'flex',
-                  alignItems: 'center',
+                  alignItems: 'stretch',
                   justifyContent: 'center',
+                  width: '100%',
                 }}>
                   {/* Left Column (1-6) */}
                   <div className="names-column" style={{
@@ -253,6 +254,7 @@ function App() {
                     flexDirection: 'column',
                     gap: '12px',
                     textAlign: 'left',
+                    minWidth: 0,
                   }}>
                     {leftCol.map((name, index) => (
                       <div
@@ -260,10 +262,13 @@ function App() {
                         className="name-item"
                         style={{
                           fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+                          fontSize: lang === 'en' ? 'clamp(0.72rem, 1.8vw, 0.85rem)' : 'clamp(0.85rem, 2.2vw, 0.95rem)',
                           fontWeight: 600,
                           color: 'var(--drapery)',
-                          letterSpacing: '0.05em',
-                          whiteSpace: 'nowrap',
+                          letterSpacing: '0.03em',
+                          whiteSpace: 'normal',
+                          wordBreak: 'break-word',
+                          lineHeight: 1.3,
                         }}
                       >
                         {name}
@@ -276,7 +281,7 @@ function App() {
                     width: '1.5px',
                     backgroundColor: 'rgba(212, 149, 10, 0.25)',
                     alignSelf: 'stretch',
-                    margin: '0 20px',
+                    margin: '0 12px',
                   }} />
 
                   {/* Right Column (7-12) */}
@@ -286,6 +291,7 @@ function App() {
                     flexDirection: 'column',
                     gap: '12px',
                     textAlign: 'left',
+                    minWidth: 0,
                   }}>
                     {rightCol.map((name, index) => (
                       <div
@@ -293,10 +299,13 @@ function App() {
                         className="name-item"
                         style={{
                           fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+                          fontSize: lang === 'en' ? 'clamp(0.72rem, 1.8vw, 0.85rem)' : 'clamp(0.85rem, 2.2vw, 0.95rem)',
                           fontWeight: 600,
                           color: 'var(--drapery)',
-                          letterSpacing: '0.05em',
-                          whiteSpace: 'nowrap',
+                          letterSpacing: '0.03em',
+                          whiteSpace: 'normal',
+                          wordBreak: 'break-word',
+                          lineHeight: 1.3,
                         }}
                       >
                         {name}
