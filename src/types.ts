@@ -62,7 +62,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     location: "ગોલા ગામ · ઓલપાડ",
     footerSalutation: "જય શ્રી હનુમાન",
     footerBrand: "કષ્ટ નિવારણ હનુમાનજી",
-    namesHeading: "શ્રી હનુમાનજીના ૧૨ નામ",
+    namesHeading: "શ્રી હનુમાનજીના ૧૨ પવિત્ર નામ",
     namesList: [
       "૧. જય હનુમાન!",
       "૨. જય અંજની સુત!",
@@ -127,7 +127,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     location: "Gola Gaam · Olpad",
     footerSalutation: "Jai Shree Hanuman",
     footerBrand: "Kasht Nivaran Hanumanji",
-    namesHeading: "12 Names of Lord Hanuman",
+    namesHeading: "12 Holy Names of Lord Hanuman",
     namesList: [
       "1. Jay Hanuman!",
       "2. Jay Anjani Suta!",
@@ -192,7 +192,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     location: "गोला ग्राम · ओलपाड",
     footerSalutation: "जय श्री हनुमान",
     footerBrand: "कष्ट निवारण हनुमानजी",
-    namesHeading: "श्री हनुमानजी के १२ नाम",
+    namesHeading: "श्री हनुमानजी के १२ पवित्र नाम",
     namesList: [
       "१. जय हनुमान!",
       "२. जय अंजनी सुत!",
@@ -205,7 +205,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       "૯. जय उदधिक्रमण!",
       "१०. जय सीता शोक विनाशक!",
       "११. जय लक्ष्मण प्राण दाता!",
-      "१२. जय दर्शनवीर दर्पहा!"
+      "१२. जय दशग्रीव दर्पहा!"
     ],
     directionsHeading: "मंदिर का पता और मार्गदर्शन",
     directionsAddress: "कष्ट निवारण हनुमानजी मंदिर, वडोलीवाक रोड, गोला गांव, गुजरात ३९४५४०",
