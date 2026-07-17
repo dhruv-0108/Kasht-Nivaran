@@ -10,6 +10,16 @@ export interface Translations {
   footerBrand: string;
   namesHeading: string;
   namesList: string[];
+  directionsHeading: string;
+  directionsAddress: string;
+  directionsPlusCode: string;
+  getDirectionsBtn: string;
+  copyAddressBtn: string;
+  addressCopied: string;
+  byRoadTitle: string;
+  byRoadDesc: string;
+  nearbyTitle: string;
+  nearbyDesc: string;
 }
 
 export const TRANSLATIONS: Record<Language, Translations> = {
@@ -35,7 +45,17 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       "૧૦. જય સીતા શોક વિનાશક!",
       "૧૧. જય લક્ષ્મણ પ્રાણ દાતા!",
       "૧૨. જય દશગ્રીવ દર્પહા!"
-    ]
+    ],
+    directionsHeading: "મંદિરનું સરનામું અને માર્ગદર્શન",
+    directionsAddress: "કષ્ટ નિવારણ હનુમાનજી મંદિર, ગોલા-તકરમા રોડ, ગોલા, ગુજરાત ૩૯૪૫૪૦",
+    directionsPlusCode: "પ્લસ કોડ: 9Q7R+2WG",
+    getDirectionsBtn: "ગૂગલ મેપ્સ પર જુઓ",
+    copyAddressBtn: "સરનામું કોપી કરો",
+    addressCopied: "સરનામું કોપી થયું!",
+    byRoadTitle: "રોડ માર્ગ દ્વારા",
+    byRoadDesc: "ઓલપાડથી આશરે ૧૦ કિ.મી. અને સુરતથી ૨૫ કિ.મી. અંતરે ગોલા-તકરમા રોડ પર આવેલું છે.",
+    nearbyTitle: "નજીકનું સ્થળ",
+    nearbyDesc: "ગોલા ગામ, ઓલપાડ તાલુકો, સુરત જિલ્લો."
   },
   en: {
     title: "Kasht Nivaran Hanumanji",
@@ -59,7 +79,17 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       "10. Jay Sita Shoka Vinashaka!",
       "11. Jay Lakshmana Prana Data!",
       "12. Jay Dashagreeva Darpaha!"
-    ]
+    ],
+    directionsHeading: "Address & Directions",
+    directionsAddress: "Kastanivaran Hanumanji Mandir, Gola-Takarma Rd, Gola, Gujarat 394540",
+    directionsPlusCode: "Plus Code: 9Q7R+2WG",
+    getDirectionsBtn: "Open in Google Maps",
+    copyAddressBtn: "Copy Address",
+    addressCopied: "Address Copied!",
+    byRoadTitle: "By Road",
+    byRoadDesc: "Located on Gola-Takarma Road, approx. 10 km from Olpad and 25 km from Surat.",
+    nearbyTitle: "Landmark",
+    nearbyDesc: "Gola Village, Olpad Taluka, Surat District."
   },
   hi: {
     title: "कष्ट निवारण हनुमानजी",
@@ -83,6 +113,16 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       "१०. सीता शोक विनाशक!",
       "११. लक्ष्मण प्राण दाता!",
       "१२. दशग्रीव दर्पहा!"
-    ]
+    ],
+    directionsHeading: "मंदिर का पता और मार्गदर्शन",
+    directionsAddress: "कष्ट निवारण हनुमानजी मंदिर, गोला-तकरमा रोड, गोला, गुजरात ३९४५४०",
+    directionsPlusCode: "प्लस कोड: 9Q7R+2WG",
+    getDirectionsBtn: "गूगल मैप्स पर खोलें",
+    copyAddressBtn: "पता कॉपी करें",
+    addressCopied: "पता कॉपी किया गया!",
+    byRoadTitle: "सड़क मार्ग",
+    byRoadDesc: "ओलपाड से लगभग 10 किमी और सूरत से 25 किमी की दूरी पर गोला-तकरमा रोड पर स्थित है।",
+    nearbyTitle: "निकटतम स्थान",
+    nearbyDesc: "गोला गांव, ओलपाड तालुका, सूरत जिला।"
   }
 };

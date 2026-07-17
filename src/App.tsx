@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { DarshanCard } from './components/DarshanCard';
+import { Directions } from './components/Directions';
 import { TRANSLATIONS } from './types';
 import type { Language } from './types';
 
@@ -251,6 +252,14 @@ function App() {
             </div>
           </div>
         </section>
+
+        {/* Divider Threshold between Names and Directions */}
+        <div style={{ width: '100%', maxWidth: '640px', marginTop: '16px' }}>
+          <hr className="threshold" />
+        </div>
+
+        {/* ── SECTION 3: Directions ── */}
+        <Directions t={t} />
 
       </main>
 
