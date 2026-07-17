@@ -7,6 +7,10 @@ function App() {
   const [lang, setLang] = useState<Language>('gu');
   const t = TRANSLATIONS[lang];
 
+  // Split the 12 names into left (first 6) and right (last 6) lists
+  const leftNames = t.namesList.slice(0, 6);
+  const rightNames = t.namesList.slice(6, 12);
+
   return (
     <div style={{
       minHeight: '100vh',
@@ -90,7 +94,7 @@ function App() {
         flexDirection: 'column',
         alignItems: 'center',
         padding: 'clamp(32px, 5vw, 64px) clamp(16px, 4vw, 40px) clamp(40px, 6vw, 80px)',
-        gap: '24px',
+        gap: '32px',
       }}>
 
         {/* Label above frame */}
@@ -129,16 +133,95 @@ function App() {
           </div>
         </div>
 
-        {/*
-          Image frame — big, responsive.
-        */}
+        {/* Responsive Layout: 12 Names on Left & Right on Desktop, Stacked on Mobile */}
         <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          alignItems: 'center',
           width: '100%',
-          maxWidth: 'min(100%, 640px)',
+          maxWidth: '1200px',
+          gap: 'clamp(24px, 4vw, 64px)',
         }}>
-          <DarshanCard t={t} />
+          
+          {/* Left Column - Names 1-6 */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px',
+            minWidth: '200px',
+            textAlign: 'right',
+            flex: '1 1 200px',
+            order: 1
+          }} className="names-column-left">
+            {leftNames.map((name, index) => (
+              <div key={index} style={{
+                fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+                fontSize: 'clamp(0.9rem, 1.5vw, 1.15rem)',
+                fontWeight: 600,
+                color: 'var(--drapery)',
+                letterSpacing: '0.1em',
+                lineHeight: '1.4',
+              }}>
+                {name}
+              </div>
+            ))}
+          </div>
+
+          {/* Center Column - Image Frame */}
+          <div style={{
+            width: '100%',
+            maxWidth: 'min(100%, 560px)',
+            flex: '2 1 400px',
+            order: 2
+          }}>
+            <DarshanCard t={t} />
+          </div>
+
+          {/* Right Column - Names 7-12 */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '16px',
+            minWidth: '200px',
+            textAlign: 'left',
+            flex: '1 1 200px',
+            order: 3
+          }} className="names-column-right">
+            {rightNames.map((name, index) => (
+              <div key={index} style={{
+                fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
+                fontSize: 'clamp(0.9rem, 1.5vw, 1.15rem)',
+                fontWeight: 600,
+                color: 'var(--drapery)',
+                letterSpacing: '0.1em',
+                lineHeight: '1.4',
+              }}>
+                {name}
+              </div>
+            ))}
+          </div>
+
         </div>
+
       </main>
+
+      {/* Custom Styles override for responsive order on mobile */}
+      <style>{`
+        @media (max-width: 900px) {
+          .names-column-left, .names-column-right {
+            text-align: center !important;
+            flex: 1 1 100% !important;
+          }
+          .names-column-left {
+            order: 2 !important;
+          }
+          .names-column-right {
+            order: 3 !important;
+          }
+        }
+      `}</style>
 
       {/* ── Footer ── */}
       <footer style={{
