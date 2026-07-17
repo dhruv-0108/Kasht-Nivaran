@@ -308,7 +308,7 @@ function App() {
         )}
 
         {activeTab === 'chalisa' && (
-          <ChalisaReader />
+          <ChalisaReader lang={lang} />
         )}
 
       </main>
