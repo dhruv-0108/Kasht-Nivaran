@@ -21,6 +21,14 @@ export interface Translations {
   nearbyTitle: string;
   nearbyDesc: string;
   visitors: string;
+  tabDarshan: string;
+  tabHistory: string;
+  tabChalisa: string;
+  historyTitle: string;
+  historyText: string;
+  timingsTitle: string;
+  timingsDarshan: string;
+  timingsAarti: string;
 }
 
 export const TRANSLATIONS: Record<Language, Translations> = {
@@ -57,7 +65,15 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     byRoadDesc: "ઓલપાડથી આશરે ૧૦ કિ.મી. અને સુરતથી ૨૫ કિ.મી. અંતરે ગોલા-તકરમા રોડ પર આવેલું છે.",
     nearbyTitle: "નજીકનું સ્થળ",
     nearbyDesc: "ગોલા ગામ, ઓલપાડ તાલુકો, સુરત જિલ્લો.",
-    visitors: "મુલાકાતીઓ"
+    visitors: "મુલાકાતીઓ",
+    tabDarshan: "દર્શન અને સ્થાન",
+    tabHistory: "મંદિરનો ઇતિહાસ",
+    tabChalisa: "હનુમાન ચાલીસા",
+    historyTitle: "શ્રી કષ્ટ નિવારણ હનુમાનજી મંદિરનો ઇતિહાસ",
+    historyText: "ગોલા ગામ (ઓલપાડ) ખાતે આવેલું શ્રી કષ્ટ નિવારણ હનુમાનજી મંદિર ભક્તો માટે પરમ શ્રદ્ધા અને આસ્થાનું કેન્દ્ર છે. આ પવિત્ર સ્થળ હનુમાનજીના પ્રતાપી અને દયાળુ સ્વરૂપ માટે જાણીતું છે. ભક્તો અહીં પોતાના શારીરિક, માનસિક અને આધ્યાત્મિક કષ્ટોના નિવારણ માટે આવે છે. શનિવાર અને મંગળવારે મંદિર પરિસરમાં ભક્તોની ભારે ભીડ દર્શન માટે ઉમટી પડે છે, જ્યાં હનુમાનજીની ભક્તિ અને આરાધના દ્વારા દિવ્ય શાંતિનો અનુભવ થાય છે.",
+    timingsTitle: "દર્શન અને આરતી સમય",
+    timingsDarshan: "નિત્ય દર્શન: સવારે ૬:૦૦ થી રાત્રે ૯:૦૦",
+    timingsAarti: "મંગળા આરતી: સવારે ૬:૩૦ · સંધ્યા આરતી: સાંજે ૭:૦૦"
   },
   en: {
     title: "Kasht Nivaran Hanumanji",
@@ -92,7 +108,15 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     byRoadDesc: "Located on Gola-Takarma Road, approx. 10 km from Olpad and 25 km from Surat.",
     nearbyTitle: "Landmark",
     nearbyDesc: "Gola Village, Olpad Taluka, Surat District.",
-    visitors: "visitors"
+    visitors: "visitors",
+    tabDarshan: "Darshan & Map",
+    tabHistory: "Temple History",
+    tabChalisa: "Hanuman Chalisa",
+    historyTitle: "History of Sri Kasht Nivaran Hanumanji Mandir",
+    historyText: "Situated in Gola Gaam (Olpad, Surat), Sri Kasht Nivaran Hanumanji Mandir is a sanctified site of immense devotion and spiritual peace. The temple is dedicated to Lord Hanuman in his 'Kasht Nivaran' form—the remover of all human sufferings, worries, and difficulties. Devotees from all walks of life visit this sacred shrine to seek blessings and find resolution for their mental, physical, and spiritual afflictions. Special prayers and heavy congregations are observed on Tuesdays and Saturdays.",
+    timingsTitle: "Darshan & Aarti Timings",
+    timingsDarshan: "Daily Darshan: 6:00 AM to 9:00 PM",
+    timingsAarti: "Mangala Aarti: 6:30 AM · Sandhya Aarti: 7:00 PM"
   },
   hi: {
     title: "कष्ट निवारण हनुमानजी",
@@ -109,7 +133,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       "३. वायु पुत्र!",
       "४. महाबल!",
       "५. रामेष्ट!",
-      "६. फाल्गुन सखा!",
+      "६. काल्गुन सखा!",
       "७. पिंगाक्ष!",
       "८. अमित विक्रम!",
       "९. उदधिक्रमण!",
@@ -127,6 +151,14 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     byRoadDesc: "ओलपाड से लगभग 10 किमी और सूरत से 25 किमी की दूरी पर गोला-तकरमा रोड पर स्थित है।",
     nearbyTitle: "निकटतम स्थान",
     nearbyDesc: "गोला गांव, ओलपाड तालुका, सूरत जिला।",
-    visitors: "दर्शक"
+    visitors: "दर्शक",
+    tabDarshan: "दर्शन और स्थान",
+    tabHistory: "मंदिर का इतिहास",
+    tabChalisa: "हनुमान चालीसा",
+    historyTitle: "श्री कष्ट निवारण हनुमानजी मंदिर का इतिहास",
+    historyText: "गोला गांव (ओलपाड, सूरत) में स्थित श्री कष्ट निवारण हनुमानजी मंदिर भक्तों के लिए अगाध श्रद्धा और आध्यात्मिक शांति का केंद्र है। यह मंदिर हनुमानजी के 'कष्ट निवारण' स्वरूप को समर्पित है—जो सभी मानवीय दुखों, कष्टों और कठिनाइयों को दूर करने वाले हैं। भक्त यहां अपने शारीरिक, मानसिक और आध्यात्मिक कष्टों से मुक्ति पाने के लिए आते हैं। मंगलवार और शनिवार को मंदिर में भक्तों की भारी भीड़ उमड़ती है।",
+    timingsTitle: "दर्शन और आरती का समय",
+    timingsDarshan: "दर्शन समय: सुबह ६:०० से रात ९:०० बजे तक",
+    timingsAarti: "मंगला आरती: सुबह ६:३૦ बजे · संध्या आरती: शाम ७:०० बजे"
   }
 };
