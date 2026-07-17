@@ -343,11 +343,11 @@ function App() {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '0.85rem' }}>
                   {[
-                    { label: t.benefitsMorning, desc: t.benefitsMorningDesc, time: '6 AM - 9 AM' },
-                    { label: t.benefitsAfternoon, desc: t.benefitsAfternoonDesc, time: '12 PM - 3 PM' },
-                    { label: t.benefitsEvening, desc: t.benefitsEveningDesc, time: '5 PM - 7 PM' },
-                    { label: t.benefitsNight, desc: t.benefitsNightDesc, time: 'Before Sleep' },
-                    { label: t.benefitsTravel, desc: t.benefitsTravelDesc, time: 'On Journey' },
+                    { label: t.benefitsMorning, desc: t.benefitsMorningDesc, time: t.timeMorning },
+                    { label: t.benefitsAfternoon, desc: t.benefitsAfternoonDesc, time: t.timeAfternoon },
+                    { label: t.benefitsEvening, desc: t.benefitsEveningDesc, time: t.timeEvening },
+                    { label: t.benefitsNight, desc: t.benefitsNightDesc, time: t.timeNight },
+                    { label: t.benefitsTravel, desc: t.benefitsTravelDesc, time: t.timeTravel },
                   ].map((benefit, idx) => (
                     <div key={idx} style={{
                       display: 'flex',

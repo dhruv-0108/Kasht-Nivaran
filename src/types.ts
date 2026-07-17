@@ -42,6 +42,11 @@ export interface Translations {
   benefitsNightDesc: string;
   benefitsTravel: string;
   benefitsTravelDesc: string;
+  timeMorning: string;
+  timeAfternoon: string;
+  timeEvening: string;
+  timeNight: string;
+  timeTravel: string;
 }
 
 export const TRANSLATIONS: Record<Language, Translations> = {
@@ -99,7 +104,12 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     benefitsNight: "રાત્રે (ઊંઘતા પહેલા)",
     benefitsNightDesc: "શત્રુઓ પર વિજય પ્રાપ્ત થાય છે અને તમામ ભયમાંથી મુક્તિ મળે છે.",
     benefitsTravel: "પ્રવાસ સમયે",
-    benefitsTravelDesc: "યાત્રા સુખદ, વિઘ્નરહિત અને સંપૂર્ણ સુરક્ષિત રહે છે."
+    benefitsTravelDesc: "યાત્રા સુખદ, વિઘ્નરહિત અને સંપૂર્ણ સુરક્ષિત રહે છે.",
+    timeMorning: "સવારે ૬ થી ૯",
+    timeAfternoon: "બપોરે ૧૨ થી ૩",
+    timeEvening: "સાંજે ૫ થી ૭",
+    timeNight: "સૂતા પહેલા",
+    timeTravel: "યાત્રા સમયે"
   },
   en: {
     title: "Kasht Nivaran Hanumanji",
@@ -155,7 +165,12 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     benefitsNight: "Night (Before Sleeping)",
     benefitsNightDesc: "Grants victory over obstacles/enemies and freedom from fear.",
     benefitsTravel: "During Travel",
-    benefitsTravelDesc: "Ensures a safe, peaceful, and auspicious journey."
+    benefitsTravelDesc: "Ensures a safe, peaceful, and auspicious journey.",
+    timeMorning: "6 AM - 9 AM",
+    timeAfternoon: "12 PM - 3 PM",
+    timeEvening: "5 PM - 7 PM",
+    timeNight: "Before Sleep",
+    timeTravel: "On Journey"
   },
   hi: {
     title: "कष्ट निवारण हनुमानजी",
@@ -169,16 +184,16 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     namesList: [
       "१. जय हनुमान!",
       "२. जय अंजनी सुत!",
-      "३. वायु पुत्र!",
-      "४. महाबल!",
-      "५. रामेष्ट!",
-      "६. काल्गुन सखा!",
-      "७. पिंगाक्ष!",
-      "८. अमित विक्रम!",
-      "९. उदधिक्रमण!",
-      "१०. सीता शोक विनाशक!",
-      "११. लक्ष्मण प्राण दाता!",
-      "१२. दर्शनवीर दर्पहा!"
+      "३. जय वायु पुत्र!",
+      "४. जय महाबल!",
+      "५. जय रामेष्ट!",
+      "६. जय फाल्गुन सखा!",
+      "७. जय पिंगाक्ष!",
+      "८. जय अमित विक्रम!",
+      "૯. जय उदधिक्रमण!",
+      "१०. जय सीता शोक विनाशक!",
+      "११. जय लक्ष्मण प्राण दाता!",
+      "१२. जय दशग्रीव दर्पहा!"
     ],
     directionsHeading: "मंदिर का पता और मार्गदर्शन",
     directionsAddress: "कष्ट निवारण हनुमानजी मंदिर, गोला-तकरमा रोड, गोला, गुजरात ३९४५४०",
@@ -211,6 +226,11 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     benefitsNight: "रात (सोने से पहले)",
     benefitsNightDesc: "शत्रुओं पर विजय प्राप्त होती है और हर प्रकार के भय से मुक्ति मिलती है।",
     benefitsTravel: "यात्रा के समय",
-    benefitsTravelDesc: "यात्रा सुखद, विघ्नमुक्त और सुरक्षित होती है।"
+    benefitsTravelDesc: "यात्रा सुखद, विघ्नमुक्त और सुरक्षित होती है।",
+    timeMorning: "सुबह ६ से ९",
+    timeAfternoon: "दोपहर १२ से ३",
+    timeEvening: "शाम ५ से ७",
+    timeNight: "सोने से पहले",
+    timeTravel: "यात्रा के समय"
   }
 };
