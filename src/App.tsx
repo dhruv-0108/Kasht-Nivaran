@@ -154,7 +154,7 @@ function App() {
           <hr className="threshold" />
         </div>
 
-        {/* ── SECTION 2: 12 Names of Hanuman (Compact Single Screen Text List) ── */}
+        {/* ── SECTION 2: 12 Names of Hanuman (Responsive Text List) ── */}
         <section style={{
           width: '100%',
           maxWidth: '600px',
@@ -183,32 +183,34 @@ function App() {
           </div>
 
           {/* 
-            Two-column simple text list. 
-            Takes minimal vertical height, keeping all 12 items easily on one screen view.
+            Responsive container.
+            On desktop: Flex row side-by-side with a vertical divider.
+            On mobile: Flex column stacked. Single line items with adjusted font size to prevent line wraps.
           */}
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            width: '100%',
-            gap: '32px',
-          }}>
+          <div 
+            className="names-container"
+            style={{
+              display: 'flex',
+              width: '100%',
+            }}
+          >
             {/* Left Column (1-6) */}
-            <div style={{
+            <div className="names-column" style={{
               flex: 1,
               display: 'flex',
               flexDirection: 'column',
               gap: '12px',
-              textAlign: 'left',
             }}>
               {leftCol.map((name, index) => (
                 <div
                   key={index}
+                  className="name-item"
                   style={{
                     fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
-                    fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)',
                     fontWeight: 600,
                     color: 'var(--drapery)',
                     letterSpacing: '0.05em',
+                    whiteSpace: 'nowrap', // Force single line
                   }}
                 >
                   {name}
@@ -216,30 +218,31 @@ function App() {
               ))}
             </div>
 
-            {/* Divider line in middle */}
-            <div style={{
+            {/* Middle Divider Line (Only visible on desktop/tablet) */}
+            <div className="names-divider" style={{
               width: '1.5px',
               backgroundColor: 'rgba(212, 149, 10, 0.25)',
               alignSelf: 'stretch',
+              margin: '0 24px',
             }} />
 
             {/* Right Column (7-12) */}
-            <div style={{
+            <div className="names-column" style={{
               flex: 1,
               display: 'flex',
               flexDirection: 'column',
               gap: '12px',
-              textAlign: 'left',
             }}>
               {rightCol.map((name, index) => (
                 <div
                   key={index}
+                  className="name-item"
                   style={{
                     fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
-                    fontSize: 'clamp(0.95rem, 1.1vw, 1.1rem)',
                     fontWeight: 600,
                     color: 'var(--drapery)',
                     letterSpacing: '0.05em',
+                    whiteSpace: 'nowrap', // Force single line
                   }}
                 >
                   {name}
@@ -250,6 +253,44 @@ function App() {
         </section>
 
       </main>
+
+      {/* Media queries overrides to manage sizes and layouts across mobile vs desktop */}
+      <style>{`
+        /* Desktop/Tablet standard spacing */
+        .names-container {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        .names-column {
+          text-align: left;
+        }
+        .name-item {
+          font-size: 1.05rem;
+        }
+        .names-divider {
+          display: block;
+        }
+
+        /* Mobile viewport changes (like s21 ultra and standard phones) */
+        @media (max-width: 600px) {
+          .names-container {
+            flex-direction: column !important;
+            gap: 12px !important;
+            align-items: center !important;
+          }
+          .names-column {
+            text-align: center !important;
+            width: 100% !important;
+            gap: 12px !important;
+          }
+          .name-item {
+            font-size: 0.95rem !important; /* Slightly smaller to guarantee no line wrapping on thin viewports */
+          }
+          .names-divider {
+            display: none !important; /* Remove center line when stacked */
+          }
+        }
+      `}</style>
 
       {/* ── Footer ── */}
       <footer style={{
