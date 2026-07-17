@@ -58,8 +58,12 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
     if (container) {
       const child = container.children[idx] as HTMLElement;
       if (child) {
+        const containerRect = container.getBoundingClientRect();
+        const childRect = child.getBoundingClientRect();
+        const relativeOffset = childRect.top - containerRect.top + container.scrollTop;
+
         container.scrollTo({
-          top: child.offsetTop - 20,
+          top: relativeOffset - 20,
           behavior: 'smooth'
         });
       }
