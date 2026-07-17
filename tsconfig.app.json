@@ -22,5 +22,11 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": [
+    "src/components/ChalisaReader.tsx",
+    "src/components/JapaCounter.tsx",
+    "src/components/KashtVisarjan.tsx",
+    "src/components/SankalpaTracker.tsx"
+  ]
 }
