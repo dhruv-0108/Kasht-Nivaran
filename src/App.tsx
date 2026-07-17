@@ -45,7 +45,7 @@ function App() {
               fontFamily: 'system-ui'
             }}
           >
-            ગુજરાતી
+            GU
           </button>
           <span style={{ color: 'rgba(212, 149, 10, 0.3)', fontSize: '0.75rem' }}>|</span>
           <button
@@ -79,7 +79,7 @@ function App() {
               fontFamily: 'system-ui'
             }}
           >
-            हिन्दी
+            HI
           </button>
         </div>
 
@@ -284,11 +284,14 @@ function App() {
         /* Mobile viewport changes (like s21 ultra and standard phones) */
         @media (max-width: 600px) {
           .app-footer {
-            flex-direction: column !important;
-            justify-content: center !important;
-            align-items: center !important;
-            gap: 12px !important;
-            text-align: center !important;
+            padding: 12px 16px !important;
+            font-size: 0.7rem !important;
+          }
+          .app-footer .script-deva {
+            font-size: 0.85rem !important;
+          }
+          .app-footer .caption {
+            font-size: 0.65rem !important;
           }
           .names-container {
             flex-direction: column !important;
@@ -316,8 +319,8 @@ function App() {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        flexWrap: 'wrap',
-        gap: '16px',
+        flexWrap: 'nowrap',
+        gap: '12px',
       }}>
         <span
           className="script-deva"
