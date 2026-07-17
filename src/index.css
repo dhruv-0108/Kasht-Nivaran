@@ -5,39 +5,40 @@
 /*
   KASHT NIVARAN — Design System
   ─────────────────────────────
-  Palette from the actual murti photograph:
+  Palette from the actual murti photograph (with clean white background):
 
   Sindoor  #C4541A  — the murti
   Marigold #D4950A  — garlands
-  Cream    #F4ECD8  — temple wall
+  Cream    #FFFFFF  — clean white background
   Drapery  #1C1612  — dark cloth behind murti (used as primary dark text)
-  Stone    #5C5042  — darkened aged stone for higher contrast readability
-  Stone lt #8A7B68  — secondary text
+  Stone    #4A3F33  — darkened aged stone for higher contrast readability
+  Stone lt #6E5F50  — secondary text
 */
 
 :root {
   --sindoor:   #C4541A;
   --marigold:  #D4950A;
-  --cream:     #F4ECD8;
-  --parchment: #EAE0CC;
+  --cream:     #FFFFFF; /* Updated to clean white */
+  --parchment: #F8F7F4; /* Light warm-white instead of deeper parchment */
   --drapery:   #1C1612;
-  --stone:     #4A3F33; /* Darkened for higher contrast */
-  --stone-lt:  #6E5F50; /* Darkened for higher contrast */
+  --stone:     #4A3F33;
+  --stone-lt:  #6E5F50;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: 'DM Sans', system-ui, sans-serif;
-  font-weight: 500; /* Made thicker */
+  font-weight: 500;
   font-size: 1rem;
   line-height: 1.6;
   background-color: var(--cream);
   color: var(--drapery);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Very subtle warm radiance */
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212,149,10,0.06) 0%, transparent 70%);
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212,149,10,0.04) 0%, transparent 70%);
   min-height: 100vh;
 }
 
@@ -60,7 +61,7 @@ h1, h2, h3, h4 {
 .inscription {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 0.75rem;
-  font-weight: 700; /* Thicker */
+  font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
 }
@@ -69,10 +70,10 @@ h1, h2, h3, h4 {
 .caption {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.75rem;
-  font-weight: 600; /* Thicker */
+  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--stone); /* High contrast */
+  color: var(--stone);
 }
 
 /* The marigold rule */
