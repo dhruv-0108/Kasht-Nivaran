@@ -28,8 +28,6 @@ function App() {
         justifyContent: 'space-between',
         alignItems: 'center',
         borderBottom: '1.5px solid rgba(212, 149, 10, 0.3)',
-        flexWrap: 'wrap',
-        gap: '16px',
       }}>
         {/* Language selector — top left corner */}
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
@@ -84,9 +82,6 @@ function App() {
             हिन्दी
           </button>
         </div>
-
-        {/* Live Visitor / Devotee counter - centered in header */}
-        <VisitorCounter t={t} />
 
         {/* Location — top right corner */}
         <span className="caption" style={{ color: 'var(--stone)', fontWeight: 700, letterSpacing: '0.2em' }}>
@@ -288,11 +283,12 @@ function App() {
 
         /* Mobile viewport changes (like s21 ultra and standard phones) */
         @media (max-width: 600px) {
-          .app-header {
+          .app-footer {
             flex-direction: column !important;
             justify-content: center !important;
             align-items: center !important;
             gap: 12px !important;
+            text-align: center !important;
           }
           .names-container {
             flex-direction: column !important;
@@ -314,12 +310,14 @@ function App() {
       `}</style>
 
       {/* ── Footer ── */}
-      <footer style={{
+      <footer className="app-footer" style={{
         padding: '16px clamp(16px, 4vw, 40px)',
         borderTop: '1.5px solid rgba(212, 149, 10, 0.3)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: '16px',
       }}>
         <span
           className="script-deva"
@@ -327,6 +325,7 @@ function App() {
         >
           {t.footerSalutation}
         </span>
+        <VisitorCounter t={t} />
         <span className="caption" style={{ color: 'var(--stone-lt)', letterSpacing: '0.2em' }}>
           {t.footerBrand}
         </span>
