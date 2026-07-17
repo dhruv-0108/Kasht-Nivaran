@@ -21,7 +21,7 @@ function App() {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        borderBottom: '1.5px solid rgba(212, 149, 10, 0.3)',
+        borderBottom: '1.5px solid rgba(0, 0, 0, 0.06)',
       }}>
         {/* Language selector — top left corner */}
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
@@ -41,7 +41,7 @@ function App() {
           >
             ગુજરાતી
           </button>
-          <span style={{ color: 'rgba(212, 149, 10, 0.3)', fontSize: '0.75rem' }}>|</span>
+          <span style={{ color: 'rgba(0, 0, 0, 0.1)', fontSize: '0.75rem' }}>|</span>
           <button
             onClick={() => setLang('en')}
             style={{
@@ -58,7 +58,7 @@ function App() {
           >
             EN
           </button>
-          <span style={{ color: 'rgba(212, 149, 10, 0.3)', fontSize: '0.75rem' }}>|</span>
+          <span style={{ color: 'rgba(0, 0, 0, 0.1)', fontSize: '0.75rem' }}>|</span>
           <button
             onClick={() => setLang('hi')}
             style={{
@@ -150,7 +150,7 @@ function App() {
           <hr className="threshold" />
         </div>
 
-        {/* ── SECTION 2: 12 Names of Hanuman (Dedicated Section below) ── */}
+        {/* ── SECTION 2: 12 Names of Hanuman ── */}
         <section style={{
           width: '100%',
           maxWidth: '720px',
@@ -178,7 +178,7 @@ function App() {
             }} />
           </div>
 
-          {/* Grid Layout of Names: 3 Columns on Desktop, 2 on Tablet, 1 on Mobile */}
+          {/* Grid Layout of Names */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -190,8 +190,8 @@ function App() {
                 key={index}
                 style={{
                   padding: '16px 20px',
-                  background: 'rgba(244, 236, 216, 0.4)',
-                  border: '1px solid rgba(212, 149, 10, 0.15)',
+                  background: 'var(--parchment)',
+                  border: '1px solid rgba(0, 0, 0, 0.06)',
                   fontFamily: lang === 'en' ? "'DM Sans', sans-serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
                   fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)',
                   fontWeight: 600,
@@ -202,6 +202,7 @@ function App() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   minHeight: '56px',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.02)'
                 }}
               >
                 {name}
@@ -215,7 +216,7 @@ function App() {
       {/* ── Footer ── */}
       <footer style={{
         padding: '16px clamp(16px, 4vw, 40px)',
-        borderTop: '1.5px solid rgba(212, 149, 10, 0.3)',
+        borderTop: '1.5px solid rgba(0, 0, 0, 0.06)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
