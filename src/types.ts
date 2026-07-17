@@ -7,31 +7,35 @@ export interface Translations {
   name: string;
   location: string;
   footerSalutation: string;
+  footerBrand: string; // Added translated footer branding
 }
 
 export const TRANSLATIONS: Record<Language, Translations> = {
   gu: {
-    title: "કષ્ટ નિવારણ હનુમાનજી", // Updated from Dada
+    title: "કષ્ટ નિવારણ હનુમાનજી",
     subtitle: "નિત્ય દર્શન",
     subAddress: "કષ્ટ નિવારણ હનુમાનજી મંદિર, ગોલા ગામ",
     name: "કષ્ટ નિવારણ હનુમાનજી",
     location: "ગોલા ગામ · ઓલપાડ",
-    footerSalutation: "જય શ્રી હનુમાન"
+    footerSalutation: "જય શ્રી હનુમાન",
+    footerBrand: "કષ્ટ નિવારણ" // Gujarati branding
   },
   en: {
-    title: "Kasht Nivaran Hanumanji", // Updated from Dada
+    title: "Kasht Nivaran Hanumanji",
     subtitle: "NITYA DARSHAN",
     subAddress: "Kasht Nivaran Hanumanji Mandir, Gola Gaam",
     name: "Kasht Nivaran Hanumanji",
     location: "Gola Gaam · Olpad",
-    footerSalutation: "Jai Shree Hanuman"
+    footerSalutation: "Jai Shree Hanuman",
+    footerBrand: "Kasht Nivaran" // English branding
   },
   hi: {
-    title: "कष्ट निवारण हनुमानजी", // Updated from Dada
+    title: "कष्ट निवारण हनुमानजी",
     subtitle: "नित्य दर्शन",
     subAddress: "कष्ट निवारण हनुमानजी मंदिर, गोला ग्राम",
     name: "कष्ट निवारण हनुमानजी",
     location: "गोला ग्राम · ओलपाड",
-    footerSalutation: "जय श्री हनुमान"
+    footerSalutation: "जय श्री हनुमान",
+    footerBrand: "कष्ट निवारण" // Hindi branding
   }
 };

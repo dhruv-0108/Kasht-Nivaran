@@ -105,7 +105,7 @@ function App() {
             fontFamily: lang === 'en' ? "'Cormorant Garamond', Georgia, serif" : "'Tiro Devanagari', 'Noto Serif Devanagari', serif",
             fontSize: 'clamp(1.75rem, 5vw, 3rem)',
             fontWeight: 700,
-            letterSpacing: '0.12em', // Added kerning space
+            letterSpacing: '0.12em',
             marginTop: '8px',
             color: 'var(--drapery)',
           }}>
@@ -117,7 +117,7 @@ function App() {
             fontSize: 'clamp(0.85rem, 2vw, 1.1rem)',
             fontWeight: 600,
             color: 'var(--stone-lt)',
-            letterSpacing: '0.08em', // Added kerning space
+            letterSpacing: '0.08em',
             marginTop: '8px',
             lineHeight: 1.5,
           }}>
@@ -155,7 +155,7 @@ function App() {
           {t.footerSalutation}
         </span>
         <span className="caption" style={{ color: 'var(--stone-lt)', letterSpacing: '0.2em' }}>
-          Kasht Nivaran
+          {t.footerBrand}
         </span>
       </footer>
 
