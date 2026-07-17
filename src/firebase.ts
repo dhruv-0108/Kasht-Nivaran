@@ -2,12 +2,12 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAjjRe7TnDHeWYbFxtb1-XON0gDY1dHvf4",
-  authDomain: "sadhana-mandala-d873f.firebaseapp.com",
-  projectId: "sadhana-mandala-d873f",
-  storageBucket: "sadhana-mandala-d873f.firebasestorage.app",
-  messagingSenderId: "434206412815",
-  appId: "1:434206412815:web:e2be6b79ed1612316ad37a"
+  apiKey: "AIzaSyA90YIokQ8viots_CqFtywnWIlPAprkHuE",
+  authDomain: "kasht-nivaran-devotees.firebaseapp.com",
+  projectId: "kasht-nivaran-devotees",
+  storageBucket: "kasht-nivaran-devotees.firebasestorage.app",
+  messagingSenderId: "1059954543838",
+  appId: "1:1059954543838:web:d513461ac15c584fd7c64f"
 };
 
 const app = initializeApp(firebaseConfig);
