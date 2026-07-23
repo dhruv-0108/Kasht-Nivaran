@@ -51,8 +51,6 @@ export const Directions: React.FC<DirectionsProps> = ({ t }) => {
       <div className="temple-frame" style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-        background: 'rgba(244, 236, 216, 0.4)',
-        backdropFilter: 'blur(8px)',
         alignItems: 'stretch',
         overflow: 'hidden',
       }}>

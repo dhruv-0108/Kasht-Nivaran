@@ -91,8 +91,9 @@ function App() {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        borderBottom: '1.5px solid rgba(212, 149, 10, 0.3)',
-        backdropFilter: 'blur(6px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.45)',
+        background: 'rgba(244, 236, 216, 0.65)',
+        backdropFilter: 'blur(10px)',
       }}>
         {/* Language selector — top left corner */}
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
@@ -184,12 +185,12 @@ function App() {
         zIndex: 2,
         display: 'flex',
         justifyContent: 'center',
-        background: 'rgba(244, 236, 216, 0.4)',
-        borderBottom: '1.5px solid rgba(212, 149, 10, 0.2)',
+        background: 'rgba(244, 236, 216, 0.55)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.45)',
         padding: '0 16px',
         flexWrap: 'nowrap',
         overflowX: 'auto',
-        backdropFilter: 'blur(6px)',
+        backdropFilter: 'blur(10px)',
       }}>
         {[
           { id: 'darshan', label: t.tabDarshan },
@@ -307,8 +308,6 @@ function App() {
               {/* Left Column: 12 Names Card */}
               <div className="temple-frame" style={{
                 padding: 'clamp(20px, 4vw, 32px)',
-                background: 'rgba(244, 236, 216, 0.4)',
-                backdropFilter: 'blur(8px)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '24px',
@@ -409,8 +408,6 @@ function App() {
               {/* Right Column: Chanting Benefits Card */}
               <div className="temple-frame" style={{
                 padding: 'clamp(20px, 4vw, 32px)',
-                background: 'rgba(244, 236, 216, 0.4)',
-                backdropFilter: 'blur(8px)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '20px',
@@ -593,13 +590,14 @@ function App() {
         position: 'relative',
         zIndex: 2,
         padding: '16px clamp(16px, 4vw, 40px)',
-        borderTop: '1.5px solid rgba(212, 149, 10, 0.3)',
+        borderTop: '1px solid rgba(255, 255, 255, 0.45)',
+        background: 'rgba(244, 236, 216, 0.65)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         flexWrap: 'nowrap',
         gap: '12px',
-        backdropFilter: 'blur(6px)',
+        backdropFilter: 'blur(10px)',
       }}>
         <span
           className="script-deva"

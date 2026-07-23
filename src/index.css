@@ -84,24 +84,27 @@ h1, h2, h3, h4 {
 }
 
 /*
-  Temple frame — the core element.
-  No border-radius. A straight edge, like a stone niche.
-  Thin marigold border (1px) + inset shadow for depth.
+  Temple frame — modern soft glassmorphic container.
+  Subtle translucent white border, rich frosted glass background, soft natural shadow.
 */
 .temple-frame {
-  border: 1.5px solid var(--marigold);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(244, 236, 216, 0.68);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   box-shadow:
-    inset 0 2px 10px rgba(28, 22, 18, 0.07),
-    0 6px 28px rgba(28, 22, 18, 0.06),
-    0 1px 4px rgba(28, 22, 18, 0.04);
-  transition: box-shadow 0.35s ease;
+    0 12px 36px -6px rgba(28, 22, 18, 0.07),
+    0 4px 14px -2px rgba(28, 22, 18, 0.03),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.35s ease;
 }
 
 .temple-frame:hover {
+  border-color: rgba(255, 255, 255, 0.85);
   box-shadow:
-    inset 0 2px 14px rgba(28, 22, 18, 0.09),
-    0 12px 48px rgba(212, 149, 10, 0.12),
-    0 2px 6px rgba(28, 22, 18, 0.05);
+    0 18px 48px -8px rgba(28, 22, 18, 0.1),
+    0 6px 20px -2px rgba(212, 149, 10, 0.08),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.95);
 }
 
 /* Smooth tilt transition */

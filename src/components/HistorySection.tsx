@@ -16,14 +16,11 @@ export const HistorySection: React.FC<HistorySectionProps> = ({ t }) => {
     }}>
       <div className="temple-frame" style={{
         padding: '60px 24px',
-        background: 'rgba(244, 236, 216, 0.4)',
-        backdropFilter: 'blur(8px)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         gap: '20px',
-        boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
       }}>
         <Hourglass size={32} style={{ color: 'var(--marigold)', animation: 'spin 8s linear infinite' }} />
         
