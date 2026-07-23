@@ -127,19 +127,19 @@ h1, h2, h3, h4 {
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0;
-  filter: blur(5px) contrast(1.08) saturate(1.15);
+  filter: blur(1.5px) contrast(1.1) saturate(1.2);
   transition: opacity 1.6s ease-in-out, transform 10s ease-in-out;
   transform: scale(1.03);
 }
 
 .ambient-dada-layer.active {
-  opacity: var(--bg-opacity, 0.18);
+  opacity: var(--bg-opacity, 0.32);
   transform: scale(1);
 }
 
 .ambient-dada-layer.vivid.active {
-  opacity: 0.32;
-  filter: blur(2px) contrast(1.1) saturate(1.2);
+  opacity: 0.48;
+  filter: blur(0px) contrast(1.12) saturate(1.25);
 }
 
 /* Dual Side Flanking Watermarks for Desktop Viewports */
@@ -147,16 +147,16 @@ h1, h2, h3, h4 {
 .side-watermark-right {
   position: fixed;
   top: 15%;
-  width: min(360px, 25vw);
-  height: min(600px, 70vh);
+  width: min(380px, 26vw);
+  height: min(650px, 72vh);
   background-size: cover;
   background-position: center;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.22;
-  filter: blur(1px) contrast(1.08) sepia(0.1);
-  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  opacity: 0.38;
+  filter: blur(0px) contrast(1.12) saturate(1.15);
+  mask-image: radial-gradient(ellipse at center, black 50%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 50%, transparent 85%);
   transition: opacity 1.2s ease, transform 1.2s ease;
   display: none;
 }
@@ -184,7 +184,7 @@ h1, h2, h3, h4 {
   transform: translateX(-50%);
   width: 100vw;
   height: 650px;
-  background: radial-gradient(ellipse 60% 40% at 50% 15%, rgba(212, 149, 10, 0.18) 0%, rgba(196, 84, 26, 0.08) 50%, transparent 80%);
+  background: radial-gradient(ellipse 60% 40% at 50% 15%, rgba(212, 149, 10, 0.22) 0%, rgba(196, 84, 26, 0.1) 50%, transparent 80%);
   pointer-events: none;
   z-index: 0;
 }
@@ -193,7 +193,7 @@ h1, h2, h3, h4 {
 .ambient-dada-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 25%, rgba(244, 236, 216, 0.3) 0%, rgba(244, 236, 216, 0.75) 60%, rgba(244, 236, 216, 0.92) 90%);
+  background: radial-gradient(circle at 50% 25%, rgba(244, 236, 216, 0.15) 0%, rgba(244, 236, 216, 0.55) 60%, rgba(244, 236, 216, 0.82) 90%);
 }
 
 @keyframes fadeIn {

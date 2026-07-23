@@ -67,7 +67,7 @@ function App() {
           className="side-watermark-left"
           style={{
             backgroundImage: `url('${leftSideImg.src}')`,
-            opacity: isVividBg ? 0.38 : 0.24,
+            opacity: isVividBg ? 0.55 : 0.42,
           }}
         />
 
@@ -76,7 +76,7 @@ function App() {
           className="side-watermark-right"
           style={{
             backgroundImage: `url('${rightSideImg.src}')`,
-            opacity: isVividBg ? 0.38 : 0.24,
+            opacity: isVividBg ? 0.55 : 0.42,
           }}
         />
 
