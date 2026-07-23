@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { BookOpen, Play, RotateCcw, Type, ChevronUp, Info } from 'lucide-react';
+import { BookOpen, Play, RotateCcw, Info, ChevronUp } from 'lucide-react';
 import { CHALISA_VERSES } from '../chalisaData';
 import type { Language } from '../types';
 
@@ -9,7 +9,6 @@ interface ChalisaReaderProps {
 
 export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
   const [activeVerseIdx, setActiveVerseIdx] = useState<number>(0);
-  const [fontSize, setFontSize] = useState<'base' | 'lg' | 'xl'>('lg');
   const [isAutoScrolling, setIsAutoScrolling] = useState(false);
   
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -196,28 +195,6 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
             <RotateCcw size={12} />
             {lang === 'gu' ? 'ફરીથી શરૂ' : lang === 'hi' ? 'पुनः आरंभ' : 'Reset'}
           </button>
-
-          {/* Font Size Toggle */}
-          <button
-            onClick={() => {
-              if (fontSize === 'base') setFontSize('lg');
-              else if (fontSize === 'lg') setFontSize('xl');
-              else setFontSize('base');
-            }}
-            style={{
-              padding: '6px 10px',
-              background: 'transparent',
-              border: '1.5px solid var(--stone)',
-              color: 'var(--stone)',
-              borderRadius: '8px',
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              cursor: 'pointer',
-            }}
-          >
-            <Type size={12} style={{ marginRight: '4px' }} />
-            {fontSize.toUpperCase()}
-          </button>
         </div>
       </div>
 
@@ -269,7 +246,7 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
                 </div>
 
                 <p style={{
-                  fontSize: fontSize === 'base' ? '1.05rem' : fontSize === 'lg' ? '1.2rem' : '1.35rem',
+                  fontSize: '1.1rem',
                   fontWeight: 700,
                   color: 'var(--drapery)',
                   textAlign: 'center',
