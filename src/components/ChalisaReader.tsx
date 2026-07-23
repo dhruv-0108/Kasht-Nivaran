@@ -134,10 +134,12 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        background: 'rgba(244, 236, 216, 0.4)',
+        background: 'rgba(252, 247, 237, 0.88)',
+        backdropFilter: 'blur(14px)',
         padding: '12px 20px',
         borderRadius: '12px',
-        border: '1px solid rgba(212, 149, 10, 0.2)',
+        border: 'none',
+        boxShadow: '0 4px 16px rgba(28, 22, 18, 0.05)',
         flexWrap: 'wrap',
         gap: '12px'
       }}>
@@ -251,23 +253,24 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
                 style={{
                   padding: '16px',
                   borderRadius: '12px',
-                  border: isActive ? '1.5px solid var(--sindoor)' : '1px dashed rgba(212, 149, 10, 0.25)',
-                  background: isActive ? 'rgba(212, 149, 10, 0.06)' : 'rgba(255, 255, 255, 0.4)',
+                  border: isActive ? '1.5px solid var(--sindoor)' : 'none',
+                  background: isActive ? 'rgba(244, 226, 200, 0.92)' : 'rgba(252, 247, 237, 0.88)',
+                  backdropFilter: 'blur(12px)',
                   cursor: 'pointer',
                   transition: 'all 0.2s ease',
-                  boxShadow: isActive ? '0 4px 12px rgba(212, 149, 10, 0.08)' : 'none',
+                  boxShadow: isActive ? '0 6px 20px rgba(196, 84, 26, 0.12)' : '0 4px 14px rgba(28, 22, 18, 0.04)',
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--marigold)', letterSpacing: '0.08em' }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--sindoor)', letterSpacing: '0.08em' }}>
                     {getLocalizedVerseNum(verse.num).toUpperCase()}
                   </span>
-                  {isActive && <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--sindoor)' }} />}
+                  {isActive && <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--sindoor)' }} />}
                 </div>
 
                 <p style={{
-                  fontSize: fontSize === 'base' ? '1rem' : fontSize === 'lg' ? '1.15rem' : '1.3rem',
-                  fontWeight: 650,
+                  fontSize: fontSize === 'base' ? '1.05rem' : fontSize === 'lg' ? '1.2rem' : '1.35rem',
+                  fontWeight: 700,
                   color: 'var(--drapery)',
                   textAlign: 'center',
                   lineHeight: '1.6',
@@ -287,7 +290,7 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
                   <span style={{ fontSize: '0.65rem', fontWeight: 800, color: 'var(--sindoor)', display: 'block', marginBottom: '4px' }}>
                     {lang === 'gu' ? 'સરળ અર્થ' : lang === 'hi' ? 'भावार्थ' : 'MEANING'}
                   </span>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--stone)', margin: 0, lineHeight: '1.5' }}>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--stone)', margin: 0, lineHeight: '1.5', fontWeight: 600 }}>
                     {langData.translation}
                   </p>
                 </div>
@@ -304,17 +307,14 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
         }}>
           <div className="temple-frame" style={{
             padding: '24px',
-            background: 'rgba(244, 236, 216, 0.4)',
-            backdropFilter: 'blur(8px)',
             display: 'flex',
             flexDirection: 'column',
             gap: '16px',
             textAlign: 'center',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.03)'
           }}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '6px' }}>
               <Info size={16} style={{ color: 'var(--sindoor)' }} />
-              <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--sindoor)', letterSpacing: '0.08em' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--sindoor)', letterSpacing: '0.08em' }}>
                 {lang === 'gu' ? `અર્થ · ${getLocalizedVerseNum(activeVerse.num)}` : lang === 'hi' ? `भावार्थ · ${getLocalizedVerseNum(activeVerse.num)}` : `MEANING · ${activeVerse.num.toUpperCase()}`}
               </span>
             </div>
@@ -327,14 +327,14 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
             }} />
 
             <div style={{
-              padding: '12px',
+              padding: '14px',
               borderRadius: '8px',
-              background: 'rgba(255,255,255,0.5)',
-              border: '1px solid rgba(212, 149, 10, 0.1)',
+              background: 'rgba(255, 255, 255, 0.65)',
+              border: 'none',
             }}>
               <p style={{
-                fontSize: '1rem',
-                fontWeight: 650,
+                fontSize: '1.05rem',
+                fontWeight: 700,
                 color: 'var(--drapery)',
                 lineHeight: '1.5',
                 whiteSpace: 'pre-line',
@@ -345,8 +345,9 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
             </div>
 
             <p style={{
-              fontSize: '0.9rem',
+              fontSize: '0.92rem',
               color: 'var(--stone)',
+              fontWeight: 600,
               lineHeight: '1.6',
               textAlign: 'justify',
               margin: 0,
