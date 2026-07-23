@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react';
-import { DarshanCard, DADA_IMAGES } from './components/DarshanCard';
+import { DarshanCard } from './components/DarshanCard';
 import { Directions } from './components/Directions';
 import { VisitorCounter } from './components/VisitorCounter';
 import { HistorySection } from './components/HistorySection';
 import { ChalisaReader } from './components/ChalisaReader';
 import { TRANSLATIONS } from './types';
 import type { Language } from './types';
+
+const DADA_PHOTO_IMAGES = [
+  { id: 'dada1', src: '/images/dada/dada1.jpg' },
+  { id: 'dada2', src: '/images/dada/dada2.jpg' },
+  { id: 'dada3', src: '/images/dada/dada3.jpg' },
+  { id: 'dada4', src: '/images/dada/dada4.jpg' },
+];
 
 function App() {
   const [lang, setLang] = useState<Language>('gu');
@@ -14,17 +21,17 @@ function App() {
   const [isVividBg, setIsVividBg] = useState<boolean>(false);
   const t = TRANSLATIONS[lang];
 
-  // Auto-cycle background Dada images softly every 10s
+  // Auto-cycle background Dada photo images softly every 10s
   useEffect(() => {
     const timer = setInterval(() => {
-      setSelectedIndex((prev) => (prev + 1) % DADA_IMAGES.length);
+      setSelectedIndex((prev) => (prev + 1) % DADA_PHOTO_IMAGES.length);
     }, 10000);
     return () => clearInterval(timer);
   }, []);
 
   // Compute side flanking images (alternating images for left and right margins)
-  const leftSideImg = DADA_IMAGES[(selectedIndex + 1) % DADA_IMAGES.length];
-  const rightSideImg = DADA_IMAGES[(selectedIndex + 2) % DADA_IMAGES.length];
+  const leftSideImg = DADA_PHOTO_IMAGES[(selectedIndex + 1) % DADA_PHOTO_IMAGES.length];
+  const rightSideImg = DADA_PHOTO_IMAGES[(selectedIndex + 2) % DADA_PHOTO_IMAGES.length];
 
   // Split the 12 names into left (1-6) and right (7-12) columns for side-by-side display
   const leftCol = t.namesList.slice(0, 6);
@@ -39,18 +46,18 @@ function App() {
       position: 'relative',
     }}>
 
-      {/* ── Translucent Background Watermarks & Golden Aura ── */}
+      {/* ── Translucent Background Watermarks (The 4 Photo Images) ── */}
       <div className="ambient-dada-backdrop" aria-hidden="true">
         {/* Golden divine sunburst aura */}
         <div className="golden-sunburst-aura" />
 
         {/* Central translucent Dada layer */}
-        {DADA_IMAGES.map((img, idx) => (
+        {DADA_PHOTO_IMAGES.map((img, idx) => (
           <div
             key={img.id}
             className={`ambient-dada-layer ${isVividBg ? 'vivid' : ''} ${selectedIndex === idx ? 'active' : ''}`}
             style={{
-              backgroundImage: `url('${img.fallback || img.src}')`,
+              backgroundImage: `url('${img.src}')`,
             }}
           />
         ))}
@@ -59,7 +66,7 @@ function App() {
         <div
           className="side-watermark-left"
           style={{
-            backgroundImage: `url('${leftSideImg.fallback || leftSideImg.src}')`,
+            backgroundImage: `url('${leftSideImg.src}')`,
             opacity: isVividBg ? 0.38 : 0.24,
           }}
         />
@@ -68,7 +75,7 @@ function App() {
         <div
           className="side-watermark-right"
           style={{
-            backgroundImage: `url('${rightSideImg.fallback || rightSideImg.src}')`,
+            backgroundImage: `url('${rightSideImg.src}')`,
             opacity: isVividBg ? 0.38 : 0.24,
           }}
         />
@@ -277,12 +284,7 @@ function App() {
 
               {/* The image frame — centered, standalone, and clean */}
               <div style={{ width: '100%' }}>
-                <DarshanCard
-                  t={t}
-                  lang={lang}
-                  selectedIndex={selectedIndex}
-                  onSelectImage={(idx) => setSelectedIndex(idx)}
-                />
+                <DarshanCard t={t} />
               </div>
             </div>
 
