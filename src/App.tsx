@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { DarshanCard } from './components/DarshanCard';
+import { useState, useEffect } from 'react';
+import { DarshanCard, DADA_IMAGES } from './components/DarshanCard';
 import { Directions } from './components/Directions';
 import { VisitorCounter } from './components/VisitorCounter';
 import { HistorySection } from './components/HistorySection';
@@ -10,7 +10,16 @@ import type { Language } from './types';
 function App() {
   const [lang, setLang] = useState<Language>('gu');
   const [activeTab, setActiveTab] = useState<'darshan' | 'history' | 'chalisa'>('darshan');
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const t = TRANSLATIONS[lang];
+
+  // Auto-cycle background Dada images softly every 10s
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSelectedIndex((prev) => (prev + 1) % DADA_IMAGES.length);
+    }, 10000);
+    return () => clearInterval(timer);
+  }, []);
 
   // Split the 12 names into left (1-6) and right (7-12) columns for side-by-side display
   const leftCol = t.namesList.slice(0, 6);
@@ -22,15 +31,33 @@ function App() {
       display: 'flex',
       flexDirection: 'column',
       backgroundColor: 'var(--cream)',
+      position: 'relative',
     }}>
+
+      {/* ── Translucent Background Watermarks (Ambient Dada Layer) ── */}
+      <div className="ambient-dada-backdrop" aria-hidden="true">
+        {DADA_IMAGES.map((img, idx) => (
+          <div
+            key={img.id}
+            className={`ambient-dada-layer ${selectedIndex === idx ? 'active' : ''}`}
+            style={{
+              backgroundImage: `url('${img.fallback || img.src}')`,
+            }}
+          />
+        ))}
+        <div className="ambient-dada-overlay" />
+      </div>
 
       {/* ── Header ── */}
       <header className="app-header" style={{
+        position: 'relative',
+        zIndex: 2,
         padding: '18px clamp(16px, 4vw, 40px)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         borderBottom: '1.5px solid rgba(212, 149, 10, 0.3)',
+        backdropFilter: 'blur(6px)',
       }}>
         {/* Language selector — top left corner */}
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
@@ -94,13 +121,16 @@ function App() {
 
       {/* ── Navigation Tabs ── */}
       <nav className="tab-navigation" style={{
+        position: 'relative',
+        zIndex: 2,
         display: 'flex',
         justifyContent: 'center',
-        background: 'rgba(244, 236, 216, 0.3)',
+        background: 'rgba(244, 236, 216, 0.4)',
         borderBottom: '1.5px solid rgba(212, 149, 10, 0.2)',
         padding: '0 16px',
         flexWrap: 'nowrap',
         overflowX: 'auto',
+        backdropFilter: 'blur(6px)',
       }}>
         {[
           { id: 'darshan', label: t.tabDarshan },
@@ -136,6 +166,8 @@ function App() {
 
       {/* ── Main ── */}
       <main style={{
+        position: 'relative',
+        zIndex: 1,
         flex: 1,
         display: 'flex',
         flexDirection: 'column',
@@ -193,7 +225,12 @@ function App() {
 
               {/* The image frame — centered, standalone, and clean */}
               <div style={{ width: '100%' }}>
-                <DarshanCard t={t} />
+                <DarshanCard
+                  t={t}
+                  lang={lang}
+                  selectedIndex={selectedIndex}
+                  onSelectImage={(idx) => setSelectedIndex(idx)}
+                />
               </div>
             </div>
 
@@ -499,6 +536,8 @@ function App() {
 
       {/* ── Footer ── */}
       <footer className="app-footer" style={{
+        position: 'relative',
+        zIndex: 2,
         padding: '16px clamp(16px, 4vw, 40px)',
         borderTop: '1.5px solid rgba(212, 149, 10, 0.3)',
         display: 'flex',
@@ -506,6 +545,7 @@ function App() {
         alignItems: 'center',
         flexWrap: 'nowrap',
         gap: '12px',
+        backdropFilter: 'blur(6px)',
       }}>
         <span
           className="script-deva"
