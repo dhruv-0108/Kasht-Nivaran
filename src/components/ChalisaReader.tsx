@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { BookOpen, Play, RotateCcw, Info, ChevronUp } from 'lucide-react';
+import { BookOpen, Play, Info, ChevronUp } from 'lucide-react';
 import { CHALISA_VERSES } from '../chalisaData';
 import type { Language } from '../types';
 
@@ -169,31 +169,6 @@ export const ChalisaReader: React.FC<ChalisaReaderProps> = ({ lang }) => {
           >
             <Play size={12} fill={isAutoScrolling ? '#fff' : 'transparent'} />
             {isAutoScrolling ? (lang === 'gu' ? 'સ્થગિત' : lang === 'hi' ? 'रोकें' : 'Pause') : (lang === 'gu' ? 'ઓટો સ્ક્રોલ' : lang === 'hi' ? 'ऑटो स्क्रॉल' : 'Auto Scroll')}
-          </button>
-
-          {/* Reset */}
-          <button
-            onClick={() => {
-              stopAutoScroll();
-              if (scrollContainerRef.current) scrollContainerRef.current.scrollTop = 0;
-              setActiveVerseIdx(0);
-            }}
-            style={{
-              padding: '6px 12px',
-              background: 'transparent',
-              border: '1.5px solid var(--stone)',
-              color: 'var(--stone)',
-              borderRadius: '8px',
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px'
-            }}
-          >
-            <RotateCcw size={12} />
-            {lang === 'gu' ? 'ફરીથી શરૂ' : lang === 'hi' ? 'पुनः आरंभ' : 'Reset'}
           </button>
         </div>
       </div>
