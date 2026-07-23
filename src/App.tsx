@@ -18,7 +18,6 @@ function App() {
   const [lang, setLang] = useState<Language>('gu');
   const [activeTab, setActiveTab] = useState<'darshan' | 'history' | 'chalisa'>('darshan');
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
-  const [isVividBg, setIsVividBg] = useState<boolean>(false);
   const t = TRANSLATIONS[lang];
 
   // Auto-cycle background Dada photo images softly every 10s
@@ -46,7 +45,7 @@ function App() {
       position: 'relative',
     }}>
 
-      {/* ── Translucent Background Watermarks (The 4 Photo Images) ── */}
+      {/* ── Translucent Background Watermarks (Permanently Vivid Photos) ── */}
       <div className="ambient-dada-backdrop" aria-hidden="true">
         {/* Golden divine sunburst aura */}
         <div className="golden-sunburst-aura" />
@@ -55,7 +54,7 @@ function App() {
         {DADA_PHOTO_IMAGES.map((img, idx) => (
           <div
             key={img.id}
-            className={`ambient-dada-layer ${isVividBg ? 'vivid' : ''} ${selectedIndex === idx ? 'active' : ''}`}
+            className={`ambient-dada-layer ${selectedIndex === idx ? 'active' : ''}`}
             style={{
               backgroundImage: `url('${img.src}')`,
             }}
@@ -67,7 +66,6 @@ function App() {
           className="side-watermark-left"
           style={{
             backgroundImage: `url('${leftSideImg.src}')`,
-            opacity: isVividBg ? 0.55 : 0.42,
           }}
         />
 
@@ -76,7 +74,6 @@ function App() {
           className="side-watermark-right"
           style={{
             backgroundImage: `url('${rightSideImg.src}')`,
-            opacity: isVividBg ? 0.55 : 0.42,
           }}
         />
 
@@ -87,16 +84,17 @@ function App() {
       <header className="app-header" style={{
         position: 'relative',
         zIndex: 2,
-        padding: '18px clamp(16px, 4vw, 40px)',
+        padding: '14px clamp(12px, 4vw, 40px)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         borderBottom: '1px solid rgba(255, 255, 255, 0.45)',
         background: 'rgba(244, 236, 216, 0.65)',
         backdropFilter: 'blur(10px)',
+        gap: '12px',
       }}>
         {/* Language selector — top left corner */}
-        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexShrink: 0 }}>
           <button
             onClick={() => setLang('gu')}
             style={{
@@ -147,34 +145,10 @@ function App() {
           >
             HIN
           </button>
-          <span style={{ color: 'rgba(212, 149, 10, 0.3)', fontSize: '0.75rem' }}>|</span>
-          {/* Background Ambiance Toggle Button */}
-          <button
-            onClick={() => setIsVividBg(!isVividBg)}
-            title={isVividBg ? 'Switch to Soft Background' : 'Switch to Vivid Background'}
-            style={{
-              background: isVividBg ? 'rgba(196, 84, 26, 0.15)' : 'none',
-              border: '1px solid rgba(212, 149, 10, 0.4)',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              fontSize: '0.7rem',
-              fontWeight: 700,
-              color: isVividBg ? 'var(--sindoor)' : 'var(--stone)',
-              padding: '2px 8px',
-              fontFamily: 'system-ui',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px',
-              transition: 'all 0.2s ease',
-            }}
-          >
-            <span style={{ fontSize: '0.75rem' }}>✨</span>
-            <span>{isVividBg ? (lang === 'en' ? 'VIVID BG' : 'સ્પષ્ટ બેકગ્રાઉન્ડ') : (lang === 'en' ? 'SOFT BG' : 'શાંત બેકગ્રાઉન્ડ')}</span>
-          </button>
         </div>
 
         {/* Location — top right corner */}
-        <span className="caption" style={{ color: 'var(--stone)', fontWeight: 700, letterSpacing: '0.2em' }}>
+        <span className="caption" style={{ color: 'var(--stone)', fontWeight: 700, letterSpacing: '0.14em', whiteSpace: 'nowrap', flexShrink: 0 }}>
           {t.location}
         </span>
       </header>
@@ -556,6 +530,13 @@ function App() {
 
         /* Mobile viewport changes (like s21 ultra and standard phones) */
         @media (max-width: 600px) {
+          .app-header {
+            padding: 10px 14px !important;
+          }
+          .app-header .caption {
+            font-size: 0.68rem !important;
+            letter-spacing: 0.1em !important;
+          }
           .app-footer {
             padding: 12px 16px !important;
             font-size: 0.7rem !important;
