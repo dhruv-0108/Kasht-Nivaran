@@ -11,6 +11,7 @@ function App() {
   const [lang, setLang] = useState<Language>('gu');
   const [activeTab, setActiveTab] = useState<'darshan' | 'history' | 'chalisa'>('darshan');
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const [isVividBg, setIsVividBg] = useState<boolean>(false);
   const t = TRANSLATIONS[lang];
 
   // Auto-cycle background Dada images softly every 10s
@@ -20,6 +21,10 @@ function App() {
     }, 10000);
     return () => clearInterval(timer);
   }, []);
+
+  // Compute side flanking images (alternating images for left and right margins)
+  const leftSideImg = DADA_IMAGES[(selectedIndex + 1) % DADA_IMAGES.length];
+  const rightSideImg = DADA_IMAGES[(selectedIndex + 2) % DADA_IMAGES.length];
 
   // Split the 12 names into left (1-6) and right (7-12) columns for side-by-side display
   const leftCol = t.namesList.slice(0, 6);
@@ -34,17 +39,40 @@ function App() {
       position: 'relative',
     }}>
 
-      {/* ── Translucent Background Watermarks (Ambient Dada Layer) ── */}
+      {/* ── Translucent Background Watermarks & Golden Aura ── */}
       <div className="ambient-dada-backdrop" aria-hidden="true">
+        {/* Golden divine sunburst aura */}
+        <div className="golden-sunburst-aura" />
+
+        {/* Central translucent Dada layer */}
         {DADA_IMAGES.map((img, idx) => (
           <div
             key={img.id}
-            className={`ambient-dada-layer ${selectedIndex === idx ? 'active' : ''}`}
+            className={`ambient-dada-layer ${isVividBg ? 'vivid' : ''} ${selectedIndex === idx ? 'active' : ''}`}
             style={{
               backgroundImage: `url('${img.fallback || img.src}')`,
             }}
           />
         ))}
+
+        {/* Left Side Flanking Watermark Panel (Desktop) */}
+        <div
+          className="side-watermark-left"
+          style={{
+            backgroundImage: `url('${leftSideImg.fallback || leftSideImg.src}')`,
+            opacity: isVividBg ? 0.38 : 0.24,
+          }}
+        />
+
+        {/* Right Side Flanking Watermark Panel (Desktop) */}
+        <div
+          className="side-watermark-right"
+          style={{
+            backgroundImage: `url('${rightSideImg.fallback || rightSideImg.src}')`,
+            opacity: isVividBg ? 0.38 : 0.24,
+          }}
+        />
+
         <div className="ambient-dada-overlay" />
       </div>
 
@@ -110,6 +138,30 @@ function App() {
             }}
           >
             HIN
+          </button>
+          <span style={{ color: 'rgba(212, 149, 10, 0.3)', fontSize: '0.75rem' }}>|</span>
+          {/* Background Ambiance Toggle Button */}
+          <button
+            onClick={() => setIsVividBg(!isVividBg)}
+            title={isVividBg ? 'Switch to Soft Background' : 'Switch to Vivid Background'}
+            style={{
+              background: isVividBg ? 'rgba(196, 84, 26, 0.15)' : 'none',
+              border: '1px solid rgba(212, 149, 10, 0.4)',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '0.7rem',
+              fontWeight: 700,
+              color: isVividBg ? 'var(--sindoor)' : 'var(--stone)',
+              padding: '2px 8px',
+              fontFamily: 'system-ui',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            <span style={{ fontSize: '0.75rem' }}>✨</span>
+            <span>{isVividBg ? (lang === 'en' ? 'VIVID BG' : 'સ્પષ્ટ બેકગ્રાઉન્ડ') : (lang === 'en' ? 'SOFT BG' : 'શાંત બેકગ્રાઉન્ડ')}</span>
           </button>
         </div>
 
